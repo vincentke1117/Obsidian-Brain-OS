@@ -60,9 +60,9 @@ cp -r skills/recommended/*/ ~/.agents/skills/
 ```bash
 # 示例：替换 skill 中的所有占位符
 cd ~/.agents/skills/article-notes-integration/
-sed -i '' 's|{{BRAIN_PATH}}|/path/to/your/vault|g' SKILL.md
-sed -i '' 's|{{USER_NAME}}|Your Name|g' SKILL.md
-sed -i '' 's|{{TIMEZONE}}|America/New_York|g' SKILL.md
+sed -i '' 's|/tmp/brain-os-test/vault|/path/to/your/vault|g' SKILL.md
+sed -i '' 's|Alex|Your Name|g' SKILL.md
+sed -i '' 's|CST|America/New_York|g' SKILL.md
 ```
 
 ---
@@ -89,9 +89,9 @@ openclaw cron import cron-examples/personal-ops.json
 
 | 占位符 | 替换为 | 示例 |
 |--------|--------|------|
-| `{{BRAIN_PATH}}` | 你的 vault 路径 | `/home/user/my-brain` |
-| `{{USER_NAME}}` | 你的显示名 | `Alex` |
-| `{{TIMEZONE}}` | 你的时区 | `America/New_York` |
+| `/tmp/brain-os-test/vault` | 你的 vault 路径 | `/home/user/my-brain` |
+| `Alex` | 你的显示名 | `Alex` |
+| `CST` | 你的时区 | `America/New_York` |
 | `{{DISCORD_WEBHOOK_URL}}` | 你的 webhook URL | `https://discord.com/api/webhooks/...` |
 | `{{DISCORD_CHANNEL_ID}}` | 你的频道 ID | `123456789012345678` |
 | `{{AGENT_ID}}` | 你的 agent ID | 取决于你的设置 |

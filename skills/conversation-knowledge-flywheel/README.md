@@ -31,11 +31,11 @@ It should not be used as a free-floating generic deep-research engine. Before de
 - a NotebookLM context pack
 - a constrained research seed
 
-Only Codex Main decides whether a theme deserves NotebookLM reinforcement.
+Only Brain OS Manager decides whether a theme deserves NotebookLM reinforcement.
 
 ## Responsibility split
 
-- **Codex Main**: integrate recall layers, resolve project routing, decide what becomes knowledge, prepare writer package
+- **Brain OS Manager**: integrate recall layers, resolve project routing, decide what becomes knowledge, prepare writer package
 - **Writer-Agent**: formally land approved content into Brain, commit, verify Obsidian visibility
 - **Surveillance layer**: pre-screen only; no final note decisions
 

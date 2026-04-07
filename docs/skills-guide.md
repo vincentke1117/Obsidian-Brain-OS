@@ -167,7 +167,7 @@ skills/my-skill/
 ## Writing Good Skill Instructions
 
 ### Do
-- Be specific about file paths (use `{{BRAIN_PATH}}` for portability)
+- Be specific about file paths (use `/tmp/brain-os-test/vault` for portability)
 - Include guardrails (what NOT to do)
 - Define clear output formats
 - Specify commit requirements

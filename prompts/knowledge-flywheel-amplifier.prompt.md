@@ -1,11 +1,11 @@
 # Knowledge Flywheel Amplifier — Nightly Master Prompt
 
-> Runtime location: `{{WORKSPACE_PATH}}/knowledge-flywheel-amplifier.prompt.md`
+> Runtime location: `/tmp/brain-os-test/workspace/knowledge-flywheel-amplifier.prompt.md`
 > This is a template — copy to your workspace and customize.
 
-Read and follow the `knowledge-flywheel-amplifier` skill (`{{SKILLS_PATH}}/knowledge-flywheel-amplifier/SKILL.md`).
+Read and follow the `knowledge-flywheel-amplifier` skill (`/tmp/brain-os-test/skills/knowledge-flywheel-amplifier/SKILL.md`).
 
-Target date: yesterday ({{TIMEZONE}}) unless explicitly provided.
+Target date: yesterday (CST) unless explicitly provided.
 
 ## Role
 

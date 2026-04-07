@@ -1,12 +1,12 @@
 ---
 name: personal-ops-driver
 description: >
-  {{USER_NAME}}个人事务管理执行技能。用于个人事务收件、待办/提醒/跟进项记录、backlog 状态更新、daily briefing 管理、当前承诺事项整理、00-INBOX/01-PERSONAL-OPS 分层治理。Use when: personal ops, daily briefing, todo management, commitment tracking, life management, 00-INBOX/01-PERSONAL-OPS governance. 遇到个人事务管理、排序、提醒、承诺跟踪、驾驶舱维护等请求时，应主动使用本技能。
+  Alex个人事务管理执行技能。用于个人事务收件、待办/提醒/跟进项记录、backlog 状态更新、daily briefing 管理、当前承诺事项整理、00-INBOX/01-PERSONAL-OPS 分层治理。Use when: personal ops, daily briefing, todo management, commitment tracking, life management, 00-INBOX/01-PERSONAL-OPS governance. 遇到个人事务管理、排序、提醒、承诺跟踪、驾驶舱维护等请求时，应主动使用本技能。
 ---
 
 # Personal Ops Driver
 
-> {{USER_NAME}}个人事务管理技能（标准化版）
+> Alex个人事务管理技能（标准化版）
 
 ## 适用场景
 
@@ -38,7 +38,7 @@ description: >
 - `./references/reference-map.md`
 
 3. 当前真相源：
-- `{{BRAIN_PATH}}/00-INBOX/todo-backlog.md`
+- `/tmp/brain-os-test/vault/00-INBOX/todo-backlog.md`
 
 ## 按需读取 references
 
@@ -49,7 +49,7 @@ description: >
 
 ### B. 决策锚点
 当需要确认这套系统已经拍板过什么，读取：
-- `{{BRAIN_PATH}}/01-PERSONAL-OPS/04-REVIEWS-AND-RETROS/decision-log.md`
+- `/tmp/brain-os-test/vault/01-PERSONAL-OPS/04-REVIEWS-AND-RETROS/decision-log.md`
 - `./references/reference-map.md`
 
 重点锚点：
@@ -58,7 +58,7 @@ description: >
 
 ### C. 历史证据源
 当需要回查原始说法、语义变化、频道上下文时，读取：
-- `{{BRAIN_PATH}}/01-PERSONAL-OPS/05-OPS-LOGS/channel-history/`
+- `/tmp/brain-os-test/vault/01-PERSONAL-OPS/05-OPS-LOGS/channel-history/`
 
 注意：
 - 它是证据源，不是当前状态真相源

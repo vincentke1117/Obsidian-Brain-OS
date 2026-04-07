@@ -6,7 +6,7 @@ source_title: "Building Personal Knowledge Systems with AI"
 source_url: "{{PLACEHOLDER_URL}}"
 domain: "AI-Agent"
 status: integrated
-owner: "{{USER_NAME}}"
+owner: "Alex"
 tags: [knowledge-management, AI, personal-systems, PKM]
 integration_status: integrated
 ---

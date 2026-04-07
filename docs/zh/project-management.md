@@ -43,7 +43,7 @@ date: 2026-04-07
 project_ref: "my-project"
 status: active          # active | paused | completed
 source_of_truth: "https://github.com/user/repo"
-owner: "{{USER_NAME}}"
+owner: "Alex"
 tags: [web, side-project]
 ---
 
@@ -61,7 +61,7 @@ MVP 开发
 ## 真相源
 - 代码：`https://github.com/user/my-blog`
 - 任务：`https://github.com/user/my-blog/issues`
-- 文档：`{{BRAIN_PATH}}/05-PROJECTS/01-ACTIVE/my-project.md`
+- 文档：`/tmp/brain-os-test/vault/05-PROJECTS/01-ACTIVE/my-project.md`
 
 ## 相关知识
 - [[content-generation-patterns]]

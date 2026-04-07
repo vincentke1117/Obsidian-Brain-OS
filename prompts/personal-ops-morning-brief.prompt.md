@@ -4,11 +4,11 @@
 
 ## 目标文件
 
-`{{BRAIN_PATH}}/01-PERSONAL-OPS/01-DAILY-BRIEFS/daily-briefing.md`
+`/tmp/brain-os-test/vault/01-PERSONAL-OPS/01-DAILY-BRIEFS/daily-briefing.md`
 
 ## 工作规则
 
-1. 先获取当前日期、时间、星期（按 `{{TIMEZONE}}` 口径处理）。
+1. 先获取当前日期、时间、星期（按 `CST` 口径处理）。
 2. 读取以下文件作为唯一事实来源：
    - `00-INBOX/todo-backlog.md`
    - `01-PERSONAL-OPS/03-TODOS-AND-FOLLOWUPS/当前承诺事项.md`（如存在）

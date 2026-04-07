@@ -57,7 +57,7 @@ openclaw qmd --help
     "mode": "hybrid",
     "sources": [
       {
-        "path": "{{BRAIN_PATH}}/03-KNOWLEDGE",
+        "path": "/tmp/brain-os-test/vault/03-KNOWLEDGE",
         "watch": true,
         "embedInterval": "6h"
       },
@@ -112,7 +112,7 @@ QMD 在 Brain OS 中主要用于两个场景：
 
 ```bash
 # 手动触发 QMD 更新（Nightly Pipeline 会自动做这步）
-openclaw qmd update --path "{{BRAIN_PATH}}/03-KNOWLEDGE"
+openclaw qmd update --path "/tmp/brain-os-test/vault/03-KNOWLEDGE"
 openclaw qmd embed --path "{{TRANSCRIPT_DIR}}"
 ```
 
@@ -137,7 +137,7 @@ openclaw qmd query --mode hybrid "如何做对话挖掘"
 openclaw qmd status
 
 # 强制重建索引
-openclaw qmd rebuild --path "{{BRAIN_PATH}}/03-KNOWLEDGE"
+openclaw qmd rebuild --path "/tmp/brain-os-test/vault/03-KNOWLEDGE"
 ```
 
 **常见问题：**

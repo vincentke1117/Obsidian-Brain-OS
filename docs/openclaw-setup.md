@@ -58,9 +58,9 @@ After copying, replace `{{PLACEHOLDER}}` values in each skill:
 ```bash
 # Example: replace all placeholders in a skill
 cd ~/.agents/skills/article-notes-integration/
-sed -i '' 's|{{BRAIN_PATH}}|/path/to/your/vault|g' SKILL.md
-sed -i '' 's|{{USER_NAME}}|Your Name|g' SKILL.md
-sed -i '' 's|{{TIMEZONE}}|America/New_York|g' SKILL.md
+sed -i '' 's|/tmp/brain-os-test/vault|/path/to/your/vault|g' SKILL.md
+sed -i '' 's|Alex|Your Name|g' SKILL.md
+sed -i '' 's|CST|America/New_York|g' SKILL.md
 ```
 
 ---
@@ -87,9 +87,9 @@ Before enabling any cron job, replace these in the config files:
 
 | Placeholder | Replace With | Example |
 |-------------|-------------|---------|
-| `{{BRAIN_PATH}}` | Your vault path | `/home/user/my-brain` |
-| `{{USER_NAME}}` | Your display name | `Alex` |
-| `{{TIMEZONE}}` | Your timezone | `America/New_York` |
+| `/tmp/brain-os-test/vault` | Your vault path | `/home/user/my-brain` |
+| `Alex` | Your display name | `Alex` |
+| `CST` | Your timezone | `America/New_York` |
 | `{{DISCORD_WEBHOOK_URL}}` | Your webhook URL | `https://discord.com/api/webhooks/...` |
 | `{{DISCORD_CHANNEL_ID}}` | Your channel ID | `123456789012345678` |
 | `{{AGENT_ID}}` | Your agent ID | Depends on your setup |

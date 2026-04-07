@@ -2,7 +2,7 @@
 
 Read and follow the `article-notes-integration` skill.
 
-Target date: yesterday ({{TIMEZONE}}) unless explicitly provided.
+Target date: yesterday (CST) unless explicitly provided.
 
 ## First Step (mandatory)
 

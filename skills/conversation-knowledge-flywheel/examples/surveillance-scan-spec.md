@@ -21,7 +21,7 @@ Use a fast, cheap model layer to do broad candidate recall after transcript coll
 
 ## Recall Standard (not final knowledge standard)
 
-Surveillance exists to reduce miss risk before Codex Main reads deeply.
+Surveillance exists to reduce miss risk before Brain OS Manager reads deeply.
 It should score candidates using recall-oriented signals:
 
 1. **Project relevance**
@@ -50,4 +50,4 @@ For each project, produce:
 - no claim that a candidate is definitely worth long-term memory
 - no direct Brain write
 - no hallucinated project mapping when project confidence is low
-- no overriding Codex Main judgment
+- no overriding Brain OS Manager judgment

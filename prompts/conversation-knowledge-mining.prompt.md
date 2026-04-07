@@ -1,11 +1,11 @@
 # Conversation Knowledge Mining — Nightly Master Prompt
 
-> Runtime location: `{{WORKSPACE_PATH}}/conversation-knowledge-mining.prompt.md`
+> Runtime location: `/tmp/brain-os-test/workspace/conversation-knowledge-mining.prompt.md`
 > This is a template — copy to your workspace and customize.
 
-Read and follow the `conversation-knowledge-flywheel` skill (`{{SKILLS_PATH}}/conversation-knowledge-flywheel/SKILL.md`).
+Read and follow the `conversation-knowledge-flywheel` skill (`/tmp/brain-os-test/skills/conversation-knowledge-flywheel/SKILL.md`).
 
-Target date: yesterday ({{TIMEZONE}}) unless explicitly provided.
+Target date: yesterday (CST) unless explicitly provided.
 
 ## First Step (mandatory)
 

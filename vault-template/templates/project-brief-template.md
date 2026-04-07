@@ -4,7 +4,7 @@ date: {{DATE}}
 project_ref: "{{PROJECT_REF}}"
 status: active  # active | paused | completed | archived
 source_of_truth: "{{REPO_OR_DOCS_PATH}}"
-owner: "{{USER_NAME}}"
+owner: "Alex"
 ---
 
 # {{PROJECT_NAME}}

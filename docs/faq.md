@@ -46,7 +46,7 @@ Brain OS supports **modular installation**. See [Getting Started](getting-starte
 
 1. Edit `scripts/config.env` → `TIMEZONE="Your/Timezone"`
 2. Edit cron job configs → `schedule.tz`
-3. Replace `{{TIMEZONE}}` in skill files
+3. Replace `CST` in skill files
 
 ---
 

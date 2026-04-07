@@ -1,14 +1,14 @@
 # Personal Ops Operating Model
 
-> {{USER_NAME}}个人事务管理正式方案（v1）
+> Alex个人事务管理正式方案（v1）
 > 状态：生效中
 > 更新日期：2026-04-05
 
 ## 目标
-把{{USER_NAME}}在聊天中交办、补充、确认、变更的个人事务，稳定纳入统一收件、分诊、排序、推进、提醒、承诺跟踪与归档体系。
+把Alex在聊天中交办、补充、确认、变更的个人事务，稳定纳入统一收件、分诊、排序、推进、提醒、承诺跟踪与归档体系。
 
 ## 唯一真相源（SSoT）
-- `{{BRAIN_PATH}}/00-INBOX/todo-backlog.md`
+- `/tmp/brain-os-test/vault/00-INBOX/todo-backlog.md`
 
 其他文件都是派生视图，不是新真相源。
 
@@ -44,4 +44,4 @@
 ## 方法论放置原则
 - Skill / references 负责方法论
 - Brain 00 负责事实真相
-- Brain 01 负责给{{USER_NAME}}看的整理结果
+- Brain 01 负责给Alex看的整理结果

@@ -47,8 +47,8 @@ Brain OS 不是单打独斗的系统。它像一个团队：
 
 推荐模型（按优先级）：
 - GPT-5.3 Codex / GPT-5.4（OpenAI）
-- Claude Sonnet 4 / Opus 4（Anthropic）
-- GLM-5（智谱，中文场景优秀）
+- multimodal models with vision（Anthropic）
+- Chinese-optimized multimodal models，中文场景优秀）
 
 **不推荐**：纯文本模型（如某些轻量 embedding-only 模型）作为主 Agent。
 
@@ -77,7 +77,7 @@ Brain OS 不是单打独斗的系统。它像一个团队：
 - 执行 git commit，确保 Obsidian 可见
 - 冲突仲裁：如果两个请求要写同一个文件，Writer 决定怎么合并
 
-**模型要求**：中低即可（GLM-4.7 / Haiku 级别），主要是机械写入+格式化。
+**模型要求**：中低即可（your-light-model (e.g., Haiku, GLM-4.7-flash) 级别），主要是机械写入+格式化。
 
 **Cron 任务**：无（按需被调用，不需要定时触发）。
 
@@ -100,7 +100,7 @@ Brain OS 不是单打独斗的系统。它像一个团队：
 - 过滤掉闲聊、表情包、无意义插话
 - 只记录：决策、任务分配、技术讨论、重要结论、承诺变更
 
-**模型要求**：低成本模型即可（MiniMax M2.7 Highspeed / Haiku）。这是结构化记录工作，不需要深度推理。
+**模型要求**：低成本模型即可（your-light-model / Haiku）。这是结构化记录工作，不需要深度推理。
 
 **Cron 任务**：
 | 任务 | 时间 | 说明 |
@@ -119,7 +119,7 @@ Brain OS 不是单打独斗的系统。它像一个团队：
 - 自动补提交未提交的改动（commit patrol，每 30 分钟）
 - 产出巡检报告，标记需要人工介入的问题
 
-**模型要求**：低成本模型（MiniMax M2.7 Highspeed）。巡检是规则检查，不是创意工作。
+**模型要求**：低成本模型（your-light-model）。巡检是规则检查，不是创意工作。
 
 **Cron 任务**：
 | 任务 | 时间 | 说明 |

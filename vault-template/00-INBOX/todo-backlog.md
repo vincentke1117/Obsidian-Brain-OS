@@ -2,7 +2,7 @@
 
 > 个人事务统一收件口（SSoT）
 > 更新时间：{{DATE}}
-> 负责人：{{USER_NAME}} / AI Agent
+> 负责人：Alex / AI Agent
 
 ---
 

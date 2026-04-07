@@ -278,12 +278,12 @@ for template in "$REPO_DIR/cron-examples"/*.json; do
   filename="$(basename "$template")"
   output="$CRON_OUT_DIR/$filename"
   sed \
-    -e "s|{{BRAIN_PATH}}|$BRAIN_PATH|g" \
-    -e "s|{{WORKSPACE_PATH}}|$WORKSPACE_PATH|g" \
-    -e "s|{{SKILLS_PATH}}|$SKILLS_PATH|g" \
+    -e "s|/tmp/brain-os-test/vault|$BRAIN_PATH|g" \
+    -e "s|/tmp/brain-os-test/workspace|$WORKSPACE_PATH|g" \
+    -e "s|/tmp/brain-os-test/skills|$SKILLS_PATH|g" \
     -e "s|{{TRANSCRIPT_DIR}}|${TRANSCRIPT_DIR:-$HOME/conversations}|g" \
-    -e "s|{{USER_NAME}}|$USER_NAME|g" \
-    -e "s|{{TIMEZONE}}|$TIMEZONE|g" \
+    -e "s|Alex|$USER_NAME|g" \
+    -e "s|CST|$TIMEZONE|g" \
     -e "s|{{DISCORD_WEBHOOK_URL}}||g" \
     "$template" > "$output"
   print_ok "Generated: cron-examples/generated/$filename"
@@ -297,9 +297,105 @@ echo ""
 echo -e "${YELLOW}Remember to set DISCORD_WEBHOOK_URL in the generated files if you use webhooks.${NC}"
 
 # =============================================================================
-# Step 8: Verify
+# Step 8: Bulk placeholder replacement across entire repo
 # =============================================================================
-print_step "Step 8: Verification"
+print_step "Step 8: Bulk Placeholder Replacement"
+
+echo "Replacing all placeholders in cron templates, skills, prompts, and docs..."
+echo "This makes the entire repo ready to use with your configuration."
+echo ""
+
+# Define all replacements from config.env values
+REPLACEMENTS=(
+  "/tmp/brain-os-test/vault|$BRAIN_PATH"
+  "/tmp/brain-os-test/workspace|$WORKSPACE_PATH"
+  "/tmp/brain-os-test/skills|$SKILLS_PATH"
+  "Alex|$USER_NAME"
+  "CST|$TIMEZONE"
+)
+
+# Agent identity placeholders (set later, after user provides model info)
+AGENT_PLACEHOLDERS=(
+  "{{MAIN_AGENT_NAME}}"
+  "{{REVIEW_AGENT_NAME}}"
+  "{{PROJECT_TOOL}}"
+  "{{MAIN_MODEL}}"
+  "{{LIGHT_MODEL}}"
+)
+
+REPLACE_COUNT=0
+
+# Phase 1: Path/user replacements
+for item in "${REPLACEMENTS[@]}"; do
+  ph="${item%%|*}"
+  val="${item#*|}"
+  while IFS= read -r -d '' file; do
+    [[ "$file" == *".git"* ]] && continue
+    [[ "$file" == *"generated"* ]] && continue
+    [[ "$file" == *"node_modules"* ]] && continue
+    if grep -qF "$ph" "$file" 2>/dev/null; then
+      sed -i '' "s|$ph|$val|g" "$file"
+      REPLACE_COUNT=$((REPLACE_COUNT+1))
+    fi
+  done < <(find "$REPO_DIR" -type f \( -name '*.md' -o -name '*.json' -o -name '*.sh' \) -print0 2>/dev/null)
+done
+
+if $TEST_MODE; then
+  # In test mode: replace agent placeholders with generic defaults
+  for ph in "${AGENT_PLACEHOLDERS[@]}"; do
+    case "$ph" in
+      "{{MAIN_AGENT_NAME}}") val="Brain OS Manager" ;;
+      "{{REVIEW_AGENT_NAME}}") val="Review Agent" ;;
+      "{{PROJECT_TOOL}}") val="External Tool" ;;
+      "{{MAIN_MODEL}}") val="your-main-model" ;;
+      "{{LIGHT_MODEL}}") val="your-light-model" ;;
+      *) val="placeholder" ;;
+    esac
+    while IFS= read -r -d '' file; do
+      [[ "$file" == *".git"* ]] && continue
+      [[ "$file" == *"generated"* ]] && continue
+      if grep -qF "$ph" "$file" 2>/dev/null; then
+        sed -i '' "s|$ph|$val|g" "$file"
+        REPLACE_COUNT=$((REPLACE_COUNT+1))
+      fi
+    done < <(find "$REPO_DIR" -type f \( -name '*.md' -o -name '*.json' \) -print0 2>/dev/null)
+  done
+  print_ok "Bulk replacement done ($REPLACE_COUNT substitutions, test mode)"
+else
+  # Ask for agent info
+  ask "Your main agent's display name (e.g., Brain OS Manager)" "Brain OS Manager"
+  MAIN_AGENT_NAME="$REPLY"
+  ask "Your main model ID (e.g., gpt-4o, claude-sonnet-4)" ""
+  MAIN_MODEL="$REPLY"
+  ask "Your lightweight model for routine tasks (e.g., haiku, glm-4.7-flash)" ""
+  LIGHT_MODEL="$REPLY"
+  
+  AGENT_VALS=(
+    "{{MAIN_AGENT_NAME}}|$MAIN_AGENT_NAME"
+    "{{MAIN_MODEL}}|$MAIN_MODEL"
+    "{{LIGHT_MODEL}}|$LIGHT_MODEL"
+    "{{REVIEW_AGENT_NAME}}|Review Agent"
+    "{{PROJECT_TOOL}}|External Project Tool"
+  )
+  
+  for item in "${AGENT_VALS[@]}"; do
+    ph="${item%%|*}"
+    val="${item#*|}"
+    while IFS= read -r -d '' file; do
+      [[ "$file" == *".git"* ]] && continue
+      [[ "$file" == *"generated"* ]] && continue
+      if grep -qF "$ph" "$file" 2>/dev/null; then
+        sed -i '' "s|$ph|$val|g" "$file"
+        REPLACE_COUNT=$((REPLACE_COUNT+1))
+      fi
+    done < <(find "$REPO_DIR" -type f \( -name '*.md' -o -name '*.json' \) -print0 2>/dev/null)
+  done
+  print_ok "Bulk replacement done ($REPLACE_COUNT substitutions)"
+fi
+# =============================================================================
+# Step 9: Verify
+# =============================================================================
+print_step "Step 9: Verification"
 
 PASS=0
 FAIL=0

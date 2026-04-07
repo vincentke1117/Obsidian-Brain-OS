@@ -34,7 +34,7 @@ All templates include frontmatter with the following standard fields:
 |-------|-------------|
 | `title` | Note title |
 | `date` | Creation date (use `{{DATE}}` as placeholder in templates) |
-| `owner` | Owner (`{{USER_NAME}}` in templates) |
+| `owner` | Owner (`Alex` in templates) |
 | `status` | Workflow status (varies by template) |
 | `tags` | Array of tags for search and classification |
 
@@ -45,7 +45,7 @@ When creating new notes from templates, replace placeholders:
 | Placeholder | Replace With |
 |-------------|--------------|
 | `{{DATE}}` | Current date in `YYYY-MM-DD` format |
-| `{{USER_NAME}}` | The owner's name |
+| `Alex` | The owner's name |
 | `{{PLACEHOLDER_*}}` | Context-specific value (URL, path, etc.) |
 | `{{PROJECT_REF}}` | Unique project identifier (e.g., `proj-blog`) |
 

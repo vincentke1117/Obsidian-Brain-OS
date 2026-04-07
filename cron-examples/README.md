@@ -38,11 +38,11 @@ Before importing, search and replace all placeholders:
 | Placeholder | Description |
 |-------------|-------------|
 | `{{USER_HOME}}` | Your home directory path |
-| `{{BRAIN_PATH}}` | Obsidian vault path |
-| `{{WORKSPACE_PATH}}` | OpenClaw workspace path |
-| `{{SKILLS_PATH}}` | Skills directory path |
+| `/tmp/brain-os-test/vault` | Obsidian vault path |
+| `/tmp/brain-os-test/workspace` | OpenClaw workspace path |
+| `/tmp/brain-os-test/skills` | Skills directory path |
 | `{{PROJECTS_PATH}}` | Projects directory path |
-| `{{USER_NAME}}` | Your name (e.g. Alex) |
+| `Alex` | Your name (e.g. Alex) |
 | `{{USER_DISPLAY_NAME}}` | Your Discord display name |
 | `{{USER_HANDLE}}` | Your Discord handle (lowercase) |
 | `{{DISCORD_USER_ID}}` | Your Discord user ID |

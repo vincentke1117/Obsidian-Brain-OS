@@ -76,7 +76,7 @@ description: >
 在以下文件中追加/更新 `04:00 Amplifier` 部分：
 - `03-KNOWLEDGE/01-READING/04-DIGESTS/nightly-digest-YYYY-MM-DD.md`
 
-摘要部分须让 {{USER_NAME}} 在 30 秒内读懂，仅包含：
+摘要部分须让 Alex 在 30 秒内读懂，仅包含：
 - 今晚有没有真正形成跨源汇合
 - 如果没有，是因为哪一段缺失 / degraded
 - 如果有，最值得看的 topic / open question / research seed 是什么

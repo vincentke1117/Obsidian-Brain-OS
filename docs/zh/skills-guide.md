@@ -169,7 +169,7 @@ skills/my-skill/
 ## 编写好的 Skill 指令
 
 ### 要
-- 明确文件路径（使用 `{{BRAIN_PATH}}` 保证可移植性）
+- 明确文件路径（使用 `/tmp/brain-os-test/vault` 保证可移植性）
 - 包含护栏（不该做什么）
 - 定义清晰的输出格式
 - 指定 commit 要求

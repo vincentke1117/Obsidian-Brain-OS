@@ -34,11 +34,11 @@ This skill does **not** own:
 ## Inputs
 
 Primary source:
-- `{{BRAIN_PATH}}/03-KNOWLEDGE/01-DOMAINS/Article-Notes/`
+- `/tmp/brain-os-test/vault/03-KNOWLEDGE/01-DOMAINS/Article-Notes/`
 
 Context sources:
-- `{{BRAIN_PATH}}/03-KNOWLEDGE/06-INDEXES/`
-- `{{BRAIN_PATH}}/05-PROJECTS/`
+- `/tmp/brain-os-test/vault/03-KNOWLEDGE/06-INDEXES/`
+- `/tmp/brain-os-test/vault/05-PROJECTS/`
 
 ## Outputs
 

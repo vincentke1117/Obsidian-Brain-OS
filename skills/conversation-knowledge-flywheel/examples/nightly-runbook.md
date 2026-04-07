@@ -16,14 +16,14 @@ All project-linked outputs should prefer the Brain-side project registry at `05-
 ### 1) List transcripts
 
 ```bash
-{{SKILLS_PATH}}/conversation-knowledge-flywheel/scripts/list-day-transcripts.sh 2026-04-01
+/tmp/brain-os-test/skills/conversation-knowledge-flywheel/scripts/list-day-transcripts.sh 2026-04-01
 ```
 
 ### 2) Build manifest
 
 ```bash
-{{SKILLS_PATH}}/conversation-knowledge-flywheel/scripts/preflight.sh 2026-04-01
-python3 {{SKILLS_PATH}}/conversation-knowledge-flywheel/scripts/build-day-manifest.py 2026-04-01
+/tmp/brain-os-test/skills/conversation-knowledge-flywheel/scripts/preflight.sh 2026-04-01
+python3 /tmp/brain-os-test/skills/conversation-knowledge-flywheel/scripts/build-day-manifest.py 2026-04-01
 ```
 
 ### 3) Resolve project routing before synthesis

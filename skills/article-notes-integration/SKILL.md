@@ -22,7 +22,7 @@ description: >
 
 ## 主要输入
 
-- Brain root: `{{BRAIN_PATH}}`
+- Brain root: `/tmp/brain-os-test/vault`
 - 源笔记：`03-KNOWLEDGE/02-WORKING/01-ARTICLE-NOTES/`
 - 候选集：
   - 前一天新增 article notes
@@ -139,7 +139,7 @@ description: >
 在以下文件中追加/更新 `02:00 Article Integration` 部分：
 - `03-KNOWLEDGE/01-READING/04-DIGESTS/nightly-digest-YYYY-MM-DD.md`
 
-摘要部分须让 {{USER_NAME}} 在 30 秒内读完，仅包含：
+摘要部分须让 Alex 在 30 秒内读完，仅包含：
 - 处理了哪些文章
 - 有无新增 topic / open question
 - 是否 no-op / degraded

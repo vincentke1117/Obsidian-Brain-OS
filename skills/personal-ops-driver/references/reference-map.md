@@ -14,7 +14,7 @@
 - `reference-map.md`
 
 ### Brain 真相源层
-- `{{BRAIN_PATH}}/00-INBOX/todo-backlog.md`
+- `/tmp/brain-os-test/vault/00-INBOX/todo-backlog.md`
 
 ### Brain 派生视图层
 - `01-PERSONAL-OPS/01-DAILY-BRIEFS/daily-briefing.md`
@@ -26,4 +26,4 @@
 - `01-PERSONAL-OPS/05-OPS-LOGS/channel-history/`
 
 ## 一句话版本
-**Skill 负责“怎么判断、怎么整理”；Brain 的 00 负责“事实是什么”；Brain 的 01 负责“{{USER_NAME}}现在该看什么”。**
+**Skill 负责“怎么判断、怎么整理”；Brain 的 00 负责“事实是什么”；Brain 的 01 负责“Alex现在该看什么”。**

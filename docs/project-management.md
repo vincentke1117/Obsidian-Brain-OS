@@ -41,7 +41,7 @@ date: 2026-04-07
 project_ref: "my-project"
 status: active          # active | paused | completed
 source_of_truth: "https://github.com/user/repo"
-owner: "{{USER_NAME}}"
+owner: "Alex"
 tags: [web, side-project]
 ---
 
@@ -59,7 +59,7 @@ Setting up the article generation pipeline.
 ## Source of Truth
 - Code: `https://github.com/user/my-blog`
 - Tasks: `https://github.com/user/my-blog/issues`
-- Docs: `{{BRAIN_PATH}}/05-PROJECTS/01-ACTIVE/my-project.md`
+- Docs: `/tmp/brain-os-test/vault/05-PROJECTS/01-ACTIVE/my-project.md`
 
 ## Related Knowledge
 - [[content-generation-patterns]]

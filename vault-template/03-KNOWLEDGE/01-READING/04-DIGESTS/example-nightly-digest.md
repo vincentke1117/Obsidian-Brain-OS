@@ -3,7 +3,7 @@ title: "Nightly Digest — YYYY-MM-DD"
 date: 2026-04-07
 type: nightly-digest
 stage: 3_complete
-owner: "{{USER_NAME}}"
+owner: "Alex"
 ---
 
 # 🌙 Nightly Digest — 2026-04-07

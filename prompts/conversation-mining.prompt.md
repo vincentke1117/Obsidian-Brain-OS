@@ -2,7 +2,7 @@
 
 Read and follow the `conversation-knowledge-flywheel` skill.
 
-Target date: yesterday ({{TIMEZONE}}) unless explicitly provided.
+Target date: yesterday (CST) unless explicitly provided.
 
 ## First Step (mandatory)
 

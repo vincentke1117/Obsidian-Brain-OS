@@ -6,7 +6,7 @@ source_title: "{{ORIGINAL_TITLE}}"
 source_url: "{{URL}}"
 domain: "{{DOMAIN}}"  # AI-Agent | AI-Infra | Engineering | Product | etc.
 status: pending  # pending | integrated | archived
-owner: "{{USER_NAME}}"
+owner: "Alex"
 tags: []
 integration_status: pending
 ---

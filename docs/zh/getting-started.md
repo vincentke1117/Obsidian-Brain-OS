@@ -118,9 +118,9 @@ cp -r skills/recommended/*/ ~/.agents/skills/
 ```
 
 然后更新每个 `SKILL.md` 中的占位符值：
-- `{{BRAIN_PATH}}` → 你的 vault 路径
-- `{{USER_NAME}}` → 你的名字
-- `{{TIMEZONE}}` → 你的时区
+- `/tmp/brain-os-test/vault` → 你的 vault 路径
+- `Alex` → 你的名字
+- `CST` → 你的时区
 
 ---
 
