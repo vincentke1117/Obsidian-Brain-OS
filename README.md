@@ -88,6 +88,8 @@ docs/zh/               ← 中文文档（Chinese translations）
 3. **[Architecture](docs/architecture.md)** — Understand the system design
 4. **[Personal Ops](docs/personal-ops.md)** — Daily operations
 5. **[Nightly Pipeline](docs/nightly-pipeline.md)** — Automated knowledge processing
+6. **[NotebookLM Integration](docs/notebooklm.md)** — Deep research with Google NotebookLM
+7. **[QMD Semantic Search](docs/qmd-setup.md)** — Vector search for large vaults
 
 ### 🇨🇳 中文用户
 

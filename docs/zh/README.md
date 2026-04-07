@@ -44,3 +44,5 @@
 1. → [核心方法论](00-philosophy.md)
 2. → [系统架构](architecture.md)
 3. → [知识库架构](knowledge-architecture.md)
+
+21. [NotebookLM 集成指南](notebooklm.md) — Google NotebookLM 深度研究集成

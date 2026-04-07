@@ -84,6 +84,8 @@ docs/zh/               ← 中文文档（完整翻译）
 3. **[系统架构](docs/architecture.md)** / **[中文版](docs/zh/architecture.md)**
 4. **[个人事务系统](docs/personal-ops.md)** / **[中文版](docs/zh/personal-ops.md)**
 5. **[Nightly Pipeline](docs/nightly-pipeline.md)** / **[中文版](docs/zh/nightly-pipeline.md)**
+6. **[NotebookLM 集成指南](docs/notebooklm.md)** / **[中文版](docs/zh/notebooklm.md)** — 深度研究
+7. **[QMD 语义搜索](docs/qmd-setup.md)** / **[中文版](docs/zh/qmd-setup.md)** — 向量搜索
 
 ---
 
