@@ -1,0 +1,211 @@
+{
+  "version": 1,
+  "_meta": {
+    "_comment": "This file contains anonymized cron job templates. Before importing, replace all {{PLACEHOLDERS}} with your actual values:",
+    "_placeholders": {
+      "{{USER_HOME}}": "Your home directory, e.g. /Users/yourname",
+      "{{BRAIN_PATH}}": "Path to your Obsidian vault",
+      "{{WORKSPACE_PATH}}": "OpenClaw workspace path",
+      "{{SKILLS_PATH}}": "Path to your skills directory",
+      "{{PROJECTS_PATH}}": "Path to your projects directory",
+      "{{USER_NAME}}": "Your display name (e.g. 李主席)",
+      "{{DISCORD_USER_ID}}": "Your Discord user ID",
+      "{{GUILD_ID}}": "Discord guild/server ID",
+      "{{CHANNEL_ID}}": "Discord channel ID for personal ops",
+      "{{DISCORD_CHANNEL_ID}}": "Discord channel ID",
+      "{{DISCORD_WEBHOOK_URL}}": "Discord webhook URL",
+      "{{AGENT_ID}}": "OpenClaw agent identifier",
+      "{{USER_DISPLAY_NAME}}": "Your Discord display name",
+      "{{USER_HANDLE}}": "Your Discord handle (lowercase)"
+    }
+  },
+  "jobs": [
+    {
+      "id": "d5d4a035-2951-4de1-9cfb-4e59df1b34d4",
+      "name": "article-notes-integration-nightly",
+      "description": "article-notes-integration-nightly",
+      "enabled": true,
+      "createdAtMs": 1775373962213,
+      "updatedAtMs": 1775533990516,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 2 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "First run `{{BRAIN_PATH}}/scripts/init-nightly-digest.sh {{BRAIN_PATH}} <target-date>` so the digest skeleton and run-report directory exist. Then read and follow {{WORKSPACE_PATH}}/article-notes-integration.prompt.md. Use the article-notes-integration skill as the governing protocol. Only fill section `## 02:00 Article Integration`, do not rewrite the whole digest. Target date is yesterday in Asia/Shanghai unless explicitly provided. Process newly added or still-pending article notes only. Update article metadata, relation fields, and lightweight index/graph surfaces only when justified. Emit a no-op report when there is no signal. Success means Brain write + git commit + post-commit sync + Obsidian visible.",
+        "model": "zai/glm-5v-turbo",
+        "timeoutSeconds": 1800,
+        "thinking": "medium"
+      },
+      "delivery": {
+        "mode": "webhook",
+        "to": "{{DISCORD_WEBHOOK_URL}}",
+        "bestEffort": true
+      },
+      "state": {
+        "nextRunAtMs": 1775584800000,
+        "lastRunAtMs": 1775533862216,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 128300,
+        "lastDelivered": false,
+        "lastDeliveryStatus": "not-delivered",
+        "consecutiveErrors": 0
+      },
+      "deleteAfterRun": false,
+      "agentId": "main"
+    },
+    {
+      "id": "f490697a-9781-42e6-bbf8-cc4080a8381b",
+      "name": "conversation-knowledge-mining-nightly",
+      "description": "conversation-knowledge-mining-nightly",
+      "enabled": true,
+      "createdAtMs": 1775373962213,
+      "updatedAtMs": 1775534411518,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 3 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "First run `{{BRAIN_PATH}}/scripts/init-nightly-digest.sh {{BRAIN_PATH}} <target-date>` so the digest skeleton and run-report directory exist. Then run `{{WORKSPACE_PATH}}/scripts/export-conversations-for-nightly.sh 3` to export recent AI conversations into `/Volumes/LIZEYU/Converstions` before mining. Then run `{{SKILLS_PATH}}/conversation-knowledge-flywheel/scripts/preflight.sh <target-date>` to verify transcript availability and QMD health. Then read and follow {{WORKSPACE_PATH}}/conversation-knowledge-mining.prompt.md. Use the conversation-knowledge-flywheel skill as the governing protocol for the 03:00 conversation stage. Read the existing digest first, then only fill section `## 03:00 Conversation Mining`. Upstream read order is fixed: shared nightly digest -> `03-KNOWLEDGE/99-SYSTEM/03-INTEGRATION-REPORTS/run-reports/YYYY-MM-DD/` -> stable indexes if needed. Do not rely on legacy report paths under `12-REVIEWS/KNOWLEDGEBASE/`. Target date is yesterday in Asia/Shanghai unless explicitly provided. Produce transcript-derived knowledge only when there is real signal, but even no-op / degraded runs must leave both digest and machine report. Success means Brain write + git commit + post-commit sync + Obsidian visible.",
+        "model": "zai/glm-5v-turbo",
+        "timeoutSeconds": 1800,
+        "thinking": "medium"
+      },
+      "delivery": {
+        "mode": "webhook",
+        "to": "{{DISCORD_WEBHOOK_URL}}",
+        "bestEffort": true
+      },
+      "state": {
+        "nextRunAtMs": 1775588400000,
+        "lastRunAtMs": 1775534039203,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 372315,
+        "lastDelivered": false,
+        "lastDeliveryStatus": "not-delivered",
+        "consecutiveErrors": 0
+      },
+      "deleteAfterRun": false,
+      "agentId": "main"
+    },
+    {
+      "id": "a8b406ae-5de2-447d-836d-b12dde5be222",
+      "name": "knowledge-flywheel-amplifier-nightly",
+      "description": "knowledge-flywheel-amplifier-nightly",
+      "enabled": true,
+      "createdAtMs": 1775373962213,
+      "updatedAtMs": 1775535456310,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 4 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "First run `{{BRAIN_PATH}}/scripts/init-nightly-digest.sh {{BRAIN_PATH}} <target-date>` so the digest skeleton and run-report directory exist. Then read and follow {{WORKSPACE_PATH}}/knowledge-flywheel-amplifier.prompt.md. Use the knowledge-flywheel-amplifier skill as the governing protocol for the 04:00 amplifier stage. Read the existing digest first, then only fill section `## 04:00 Amplifier` and the final summary block. Target date is yesterday in Asia/Shanghai unless explicitly provided. Read outputs from 02:00 and 03:00 if present; if one is missing, continue in degraded mode; if both are missing, emit a no-op report rather than inventing synthesis. Do not auto-run heavy deep research. Success means Brain write + git commit + post-commit sync + Obsidian visible.",
+        "model": "zai/glm-5v-turbo",
+        "timeoutSeconds": 1800,
+        "thinking": "medium"
+      },
+      "delivery": {
+        "mode": "webhook",
+        "to": "{{DISCORD_WEBHOOK_URL}}",
+        "bestEffort": true
+      },
+      "state": {
+        "nextRunAtMs": 1775592000000,
+        "lastRunAtMs": 1775535198434,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 257876,
+        "lastDelivered": false,
+        "lastDeliveryStatus": "not-delivered",
+        "consecutiveErrors": 0
+      },
+      "deleteAfterRun": false,
+      "agentId": "main"
+    },
+    {
+      "id": "7dab4b53-a257-424a-823d-c0ea53eedcbe",
+      "agentId": "main",
+      "name": "knowledge-lint-weekly",
+      "description": "每周一 01:00 独立触发知识库内容级 Lint（作为 02:00 article-notes-integration lint pass 的备用独立入口）",
+      "enabled": true,
+      "createdAtMs": 1775388577997,
+      "updatedAtMs": 1775408706456,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 1 * * 1",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Read and follow the `knowledge-lint` skill at {{SKILLS_PATH}}/knowledge-lint/SKILL.md.\n\nFirst step (mandatory): run `{{BRAIN_PATH}}/scripts/init-nightly-digest.sh {{BRAIN_PATH}} <target-date>` so the digest skeleton and run-report directory exist. Then only fill section `## 01:00 Knowledge Lint`.\n\nExecute a full knowledge base content lint for ZeYu-AI-Brain:\n- Brain root: {{BRAIN_PATH}}\n- Run scripts/knowledge-lint.sh (or perform LLM-based equivalent if script is missing)\n- Write machine-facing report to 03-KNOWLEDGE/99-SYSTEM/03-INTEGRATION-REPORTS/run-reports/YYYY-MM-DD/knowledge-lint-YYYY-MM-DD.md\n- Update human-facing digest at 03-KNOWLEDGE/01-READING/04-DIGESTS/nightly-digest-YYYY-MM-DD.md under section `## 01:00 Knowledge Lint`\n- Commit to Brain git\n\nDigest section should only tell {{USER_NAME}}：知识库健康是否正常 / 高优先级问题大概有多少 / 是否需要他关心。\n\nSuccess = report written + digest updated + committed + Obsidian-visible.",
+        "model": "glm-5-turbo",
+        "timeoutSeconds": 1800,
+        "thinking": "low"
+      },
+      "delivery": {
+        "mode": "webhook",
+        "to": "{{DISCORD_WEBHOOK_URL}}",
+        "bestEffort": true
+      },
+      "deleteAfterRun": false,
+      "state": {
+        "nextRunAtMs": 1776013200000,
+        "lastRunAtMs": 1775408400029,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 306427,
+        "lastDelivered": false,
+        "lastDeliveryStatus": "not-delivered",
+        "consecutiveErrors": 0
+      }
+    },
+    {
+      "id": "6494a2c9-4338-47e1-b227-af24646fc1a2",
+      "agentId": "main",
+      "name": "daily-knowledge-graph-canvas-0500",
+      "description": "每天05:00自动生成知识图谱Canvas并发送至知识库文章沉淀频道",
+      "enabled": true,
+      "createdAtMs": 1775537720885,
+      "updatedAtMs": 1775537720885,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 5 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "每日知识图谱生成任务（05:00）。\n\n步骤1：运行脚本生成今日知识图谱 Canvas：\npython3 {{WORKSPACE_PATH}}/scripts/knowledge-graph-canvas.py\n\n步骤2：检查脚本输出（节点数、连线数、RQ匹配情况），若脚本失败记录错误并通知。\n\n步骤3：读取以下目录最近7天新增文件，分析文章之间的跨主题语义关联：\n- {{BRAIN_PATH}}/03-KNOWLEDGE/02-WORKING/01-ARTICLE-NOTES/\n- {{BRAIN_PATH}}/03-KNOWLEDGE/01-READING/01-DOMAINS/\n\n步骤4：对发现的跨主题关联（脚本无法自动识别的语义关联），直接编辑今日canvas文件，在edges数组末尾追加新连线。label格式：'[Agent] 关联说明'，color用'3'（黄色）区分。\n\n步骤5：git add + git commit。\nBrain仓库：{{BRAIN_PATH}}\ncommit message：auto: knowledge graph YYYY-MM-DD + agent annotations\n\n步骤6：向Discord频道1489421056379846716发送完成通知（2-3行）：\n🧠 知识图谱已更新 YYYY-MM-DD | 节点 X | 连线 Y（含 Z 条Agent标注）| RQ XX/YY",
+        "model": "zai/glm-5v-turbo",
+        "timeoutSeconds": 900
+      },
+      "delivery": {
+        "mode": "webhook",
+        "to": "{{DISCORD_WEBHOOK_URL}}",
+        "bestEffort": true
+      },
+      "state": {
+        "nextRunAtMs": 1775566800000
+      },
+      "deleteAfterRun": false
+    }
+  ]
+}
