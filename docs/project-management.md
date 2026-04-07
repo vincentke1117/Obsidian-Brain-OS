@@ -107,6 +107,8 @@ Brain OS's project briefs give agents **context** about what they're working on.
 
 **Repository:** [github.com/FairladyZ625/Agora](https://github.com/FairladyZ625/Agora)
 
+> **Note:** Agora is actively developed. Agora 2.0 is in the roadmap — it will introduce deeper context management integration for complex coding projects. If you're doing serious multi-agent software development, keep an eye on it.
+
 ### 2. Linear
 
 **Best for:** Software teams that need fast, modern issue tracking.

@@ -72,62 +72,71 @@ description: >
 
 ---
 
-## Phase 3: 分步安装
+## Phase 3: 安装执行
 
-根据用户选择的方案，逐步引导。
+**优先使用 setup.sh 一键安装**（推荐）。如果用户要求手动安装，则走分步流程。
 
-### Step 1: 克隆仓库
+### 方式 A：使用 setup.sh（推荐）
+
 ```bash
+# 1. Clone 仓库
 git clone https://github.com/FairladyZ625/Obsidian-Brain-OS.git
+cd Obsidian-Brain-OS
+
+# 2. 运行交互式安装脚本
+bash setup.sh
 ```
 
-### Step 2: 复制 vault 模板
+**setup.sh 会做什么：**
+1. 询问 vault 路径，复制模板
+2. 询问用户名、时区、语言
+3. 询问 OpenClaw workspace 路径和 skills 路径
+4. 询问是否安装 conversation-mining
+5. 写入 `scripts/config.env`（替换所有 `{{PLACEHOLDER}}`）
+6. 安装 skills（有冲突检测，不会覆盖已有 skill）
+7. 生成已填好 placeholder 的 cron 配置到 `cron-examples/generated/`
+8. 运行验证 checklist
+
+**作为 AI Agent，你可以帮用户运行这个脚本：**
+- 先收集好用户的回答（Q1-Q4）
+- 推断出 BRAIN_PATH、USER_NAME、TIMEZONE、SKILLS_PATH
+- 用 exec 工具运行脚本并传入用户答案
+- 或者直接帮用户填写参数，用 `expect` 或 heredoc 方式非交互式运行：
+
 ```bash
+# 非交互式运行示例（AI 代为执行）
+BRAIN_PATH="$HOME/my-brain" \
+USER_NAME="Alex" \
+TIMEZONE="Asia/Shanghai" \
+SKILLS_PATH="$HOME/.agents/skills" \
+bash setup.sh --non-interactive 2>&1
+```
+
+### 方式 B：手动分步安装（高级用户）
+
+```bash
+# Step 1: Clone
+git clone https://github.com/FairladyZ625/Obsidian-Brain-OS.git
+
+# Step 2: 复制 vault 模板
 cp -r Obsidian-Brain-OS/vault-template ~/my-brain
-cd ~/my-brain && git init && git add . && git commit -m "init: Brain OS vault"
-```
 
-### Step 3: 在 Obsidian 中打开
-- File → Open Vault → 选择 `~/my-brain`
-- 安装推荐插件 → 📖 详见 `docs/zh/obsidian-setup.md`
-
-### Step 4: 配置路径
-```bash
+# Step 3: 配置路径
 cp Obsidian-Brain-OS/scripts/config.env.example scripts/config.env
-# 编辑 config.env，设置你的实际路径
-```
+# 编辑 config.env，填写 BRAIN_PATH、USER_NAME 等
 
-### Step 5: 安装 Skills（如使用 OpenClaw）
-```bash
+# Step 4: 安装 skills
 cp -r Obsidian-Brain-OS/skills/* ~/.agents/skills/
+
+# Step 5: 安装 conversation-mining（可选）
+cd Obsidian-Brain-OS/tools/conversation-mining && pip install -e .
+
+# Step 6: 配置 Cron（可选）
+openclaw cron import Obsidian-Brain-OS/cron-examples/generated/nightly-pipeline.json
+openclaw cron import Obsidian-Brain-OS/cron-examples/generated/personal-ops.json
 ```
 
-📖 详见 `docs/zh/skills-guide.md`
-
-### Step 6: 安装 conversation-mining 工具（如需要对话挖掘）
-```bash
-cd Obsidian-Brain-OS/tools/conversation-mining
-pip install -e .
-conversation-mining --no-open --days 1  # 验证安装
-```
-
-📖 详见 `tools/conversation-mining/AI_INSTALL.md`
-
-### Step 7: 配置 Cron Jobs（如使用 Nightly Pipeline）
-```bash
-openclaw cron import Obsidian-Brain-OS/cron-examples/nightly-pipeline.json
-openclaw cron import Obsidian-Brain-OS/cron-examples/personal-ops.json
-```
-
-⚠️ **重要**：导入前必须替换所有 `{{PLACEHOLDER}}`。
-
-📖 详见 `docs/zh/openclaw-setup.md`
-
-### Step 8: 验证
-```bash
-bash Obsidian-Brain-OS/scripts/knowledge-lint.sh ~/my-brain
-bash Obsidian-Brain-OS/scripts/init-nightly-digest.sh ~/my-brain
-```
+📖 详见 `docs/zh/obsidian-setup.md` / `docs/zh/openclaw-setup.md`
 
 ---
 
