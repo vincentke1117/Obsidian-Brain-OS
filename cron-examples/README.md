@@ -42,7 +42,7 @@ Before importing, search and replace all placeholders:
 | `{{WORKSPACE_PATH}}` | OpenClaw workspace path |
 | `{{SKILLS_PATH}}` | Skills directory path |
 | `{{PROJECTS_PATH}}` | Projects directory path |
-| `{{USER_NAME}}` | Your name (e.g. 李主席) |
+| `{{USER_NAME}}` | Your name (e.g. Alex) |
 | `{{USER_DISPLAY_NAME}}` | Your Discord display name |
 | `{{USER_HANDLE}}` | Your Discord handle (lowercase) |
 | `{{DISCORD_USER_ID}}` | Your Discord user ID |

@@ -8,7 +8,7 @@
       "{{WORKSPACE_PATH}}": "OpenClaw workspace path",
       "{{SKILLS_PATH}}": "Path to your skills directory",
       "{{PROJECTS_PATH}}": "Path to your projects directory",
-      "{{USER_NAME}}": "Your display name (e.g. 李主席)",
+      "{{USER_NAME}}": "Your display name (e.g. Alex)",
       "{{DISCORD_USER_ID}}": "Your Discord user ID",
       "{{GUILD_ID}}": "Discord guild/server ID",
       "{{CHANNEL_ID}}": "Discord channel ID for personal ops",
