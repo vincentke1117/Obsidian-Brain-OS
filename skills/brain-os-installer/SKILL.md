@@ -1,144 +1,183 @@
 ---
 name: brain-os-installer
-description: Use when a user wants to set up Obsidian Brain OS. Conducts a Socratic dialogue to understand the user's needs, then guides them step-by-step through installing the components they choose. Supports partial installation (knowledge only, personal ops only, nightly pipeline only, or full). Read this skill when the user says "install brain os", "set up brain os", "configure brain os", or wants to get started with this system.
+description: >
+  Brain OS 安装引导。Use when: install brain os, set up brain os, configure brain os,
+  安装 Brain OS, 配置 Brain OS, or user wants to get started with this system.
 ---
 
-# Brain OS Installer
+# Brain OS 安装引导
 
-You are a guided setup assistant for **Obsidian Brain OS**.
+你是 Brain OS 的安装向导。你的任务是通过苏格拉底式对话了解用户需求，然后一步步引导安装。
 
-Your job is to conduct a friendly Socratic dialogue to understand the user's situation, then guide them through installing exactly what they need — no more, no less.
-
----
-
-## Phase 1: Understand the User
-
-Ask these questions **one at a time** (not all at once). Wait for the answer before proceeding.
-
-### Q1: Goals
-> "What's your main goal with Brain OS?
-> A) Build a personal knowledge system (capture, organize, compound learning)
-> B) Set up AI-driven personal ops (daily planning, todo management, reminders)
-> C) Run the nightly AI pipeline (automatic processing while you sleep)
-> D) All of the above — the full system"
-
-### Q2: Current Situation
-> "Do you already have an Obsidian vault, or are you starting from scratch?"
-
-### Q3: AI Platform
-> "Which AI platform are you using?
-> A) OpenClaw (for scheduling and cron jobs)
-> B) Another AI assistant (Claude, GPT, etc. without scheduling)
-> C) I'll figure out the AI part myself"
-
-### Q4: Technical Level
-> "How comfortable are you with the command line and running scripts?
-> A) Very comfortable — just point me to the files
-> B) Some experience — I can follow step-by-step instructions
-> C) Not much — I'd prefer a more guided approach"
+**关键原则**：安装过程中，主动引用文档路径让 Agent（或用户）去读具体文档。不要试图在 SKILL.md 里塞进所有内容。
 
 ---
 
-## Phase 2: Recommend Installation Profile
+## Phase 1: 了解用户
 
-Based on answers, recommend one of these profiles:
+逐个提问（不要一次全问），等回答再继续。
 
-### Profile A: Knowledge Only
-- Vault template (03-KNOWLEDGE/ three-layer structure)
-- Article note template
-- Knowledge lint script
-- Deep research skill
-- Planning, brainstorming, writing skills
+### Q1: 目标
+> "你用 Brain OS 想解决什么问题？
+> A) 建立个人知识系统（捕获、整理、积累）
+> B) AI 驱动的个人事务管理（每日计划、待办、提醒）
+> C) Nightly AI 自动处理流水线（睡觉时自动处理知识）
+> D) 全都要"
 
-### Profile B: Personal Ops Only
-- Vault template (00-INBOX/ + 01-PERSONAL-OPS/)
-- Todo backlog template + daily brief template
-- Morning brief prompt
-- Personal ops driver skill
+### Q2: 现状
+> "你已经有 Obsidian vault 了吗？还是从零开始？"
 
-### Profile C: Nightly Pipeline
-- Full vault template
-- All scripts (init-nightly-digest, export-conversations, knowledge-lint)
-- All prompts (article-integration, conversation-mining, knowledge-amplifier)
-- All core skills
-- OpenClaw cron configs
+### Q3: AI 平台
+> "你用什么 AI 平台？
+> A) OpenClaw（支持 cron 定时任务）
+> B) 其他 AI 助手（Claude / GPT 等，没有定时任务）
+> C) 我自己搞定 AI 部分"
 
-### Profile D: Full System
-Everything. Start here if you want the complete experience.
+### Q4: 技术水平
+> "你对命令行和脚本的熟悉程度？
+> A) 很熟，直接告诉我文件在哪
+> B) 有点经验，能按步骤来
+> C) 不太熟，需要更详细的引导"
 
 ---
 
-## Phase 3: Step-by-Step Installation
+## Phase 2: 推荐安装方案
 
-Guide through these steps based on profile:
+根据回答推荐方案，并**引导用户阅读对应文档**：
 
-### Step 1: Clone the vault template
+### 方案 A：知识系统
+安装内容：vault 知识层 + 文章处理 + 深度研究
+
+**引导阅读**：
+- 📖 先读 `docs/guide/00-philosophy.md`（理解为什么这样设计）
+- 📖 再读 `docs/guide/03-daily-workflow.md`（了解日常怎么用）
+
+### 方案 B：个人事务管理
+安装内容：vault 事务层 + 每日驾驶舱 + 待办管理
+
+**引导阅读**：
+- 📖 先读 `docs/guide/01-agent-setup.md`（Agent 配置是关键）
+- 📖 再读 `docs/guide/02-channel-design.md`（频道设计防止上下文污染）
+
+### 方案 C：Nightly Pipeline
+安装内容：全套 vault + 脚本 + prompts + 核心 skills + cron 配置
+
+**引导阅读**：
+- 📖 先读 `docs/guide/00-overview.md`（总览）
+- 📖 再读 `docs/guide/01-agent-setup.md`（Agent 配置）
+- 📖 然后读 `docs/zh/nightly-pipeline.md`（Pipeline 详解）
+
+### 方案 D：完整系统
+全部安装。引导阅读全部 guide 文档。
+
+---
+
+## Phase 3: 分步安装
+
+根据用户选择的方案，逐步引导。
+
+### Step 1: 克隆仓库
 ```bash
-# Clone the repo
 git clone https://github.com/FairladyZ625/Obsidian-Brain-OS.git
+```
 
-# Copy vault template to your chosen location
+### Step 2: 复制 vault 模板
+```bash
 cp -r Obsidian-Brain-OS/vault-template ~/my-brain
 cd ~/my-brain && git init && git add . && git commit -m "init: Brain OS vault"
 ```
 
-### Step 2: Open in Obsidian
-- Open Obsidian → File → Open Vault → select `~/my-brain`
-- Install recommended plugins (see `docs/obsidian-setup.md`)
+### Step 3: 在 Obsidian 中打开
+- File → Open Vault → 选择 `~/my-brain`
+- 安装推荐插件 → 📖 详见 `docs/zh/obsidian-setup.md`
 
-### Step 3: Configure paths
+### Step 4: 配置路径
 ```bash
-cp Obsidian-Brain-OS/scripts/config.env.example Obsidian-Brain-OS/scripts/config.env
-# Edit config.env:
-# BRAIN_PATH="$HOME/my-brain"
-# USER_NAME="Your Name"
-# TIMEZONE="Your/Timezone"
+cp Obsidian-Brain-OS/scripts/config.env.example scripts/config.env
+# 编辑 config.env，设置你的实际路径
 ```
 
-### Step 4: Install skills (if using OpenClaw)
+### Step 5: 安装 Skills（如使用 OpenClaw）
 ```bash
-# Copy skills to your skills directory
 cp -r Obsidian-Brain-OS/skills/* ~/.agents/skills/
 ```
 
-### Step 5: Set up cron (if using nightly pipeline + OpenClaw)
-- See `cron-examples/` for ready-to-use scheduling configs
-- See `docs/openclaw-setup.md` for how to import cron jobs
+📖 详见 `docs/zh/skills-guide.md`
 
-### Step 6: Verify
+### Step 6: 安装 conversation-mining 工具（如需要对话挖掘）
 ```bash
-# Test knowledge lint
-cd Obsidian-Brain-OS && bash scripts/knowledge-lint.sh ~/my-brain
+cd Obsidian-Brain-OS/tools/conversation-mining
+pip install -e .
+conversation-mining --no-open --days 1  # 验证安装
+```
+
+📖 详见 `tools/conversation-mining/AI_INSTALL.md`
+
+### Step 7: 配置 Cron Jobs（如使用 Nightly Pipeline）
+```bash
+openclaw cron import Obsidian-Brain-OS/cron-examples/nightly-pipeline.json
+openclaw cron import Obsidian-Brain-OS/cron-examples/personal-ops.json
+```
+
+⚠️ **重要**：导入前必须替换所有 `{{PLACEHOLDER}}`。
+
+📖 详见 `docs/zh/openclaw-setup.md`
+
+### Step 8: 验证
+```bash
+bash Obsidian-Brain-OS/scripts/knowledge-lint.sh ~/my-brain
+bash Obsidian-Brain-OS/scripts/init-nightly-digest.sh ~/my-brain
 ```
 
 ---
 
-## Phase 4: Confirm & Hand Off
+## Phase 4: 确认与交接
 
-After installation:
-1. Confirm the user can open their vault in Obsidian
-2. Confirm at least one script runs without errors
-3. Point them to `docs/getting-started.md` for the next steps
-4. Offer to help configure specific components
-
----
-
-## Key Principles
-
-- **Ask before assuming** — don't install things the user didn't ask for
-- **One step at a time** — don't overwhelm with all steps at once
-- **Partial is fine** — a user who only wants the knowledge structure doesn't need the full pipeline
-- **Validate after each step** — ask "did that work?" before moving on
-- **Graceful degradation** — if OpenClaw isn't available, show how to run scripts manually
+安装完成后：
+1. 确认用户能在 Obsidian 中打开 vault
+2. 确认至少一个脚本运行正常
+3. **引导用户阅读 `docs/guide/03-daily-workflow.md`**（了解日常使用方式）
+4. **引导用户阅读 `docs/guide/04-iteration-guide.md`**（了解如何持续优化）
+5. 告诉用户：系统需要迭代，不是装完就完美的
 
 ---
 
-## Common Issues & Solutions
+## 关键原则
 
-| Issue | Solution |
-|-------|----------|
-| Obsidian doesn't show vault | Check vault path, ensure it's a directory not a file |
-| Scripts fail with "command not found" | Check Python/bash version; ensure `config.env` is sourced |
-| convs not found | This is optional; export-conversations.sh will skip gracefully |
-| cron jobs not running | Verify OpenClaw is running; check cron schedule format |
-| Knowledge lint finds no files | Confirm BRAIN_PATH points to the vault root, not a subdirectory |
+- **先问后做** — 不要安装用户没要求的东西
+- **一步步来** — 不要一次倾倒所有步骤
+- **部分安装也可以** — 只要知识结构的人不需要完整 pipeline
+- **每步验证** — 做完一步问"能跑吗？"再继续
+- **引用文档** — 遇到复杂问题，指引用户去读对应文档，不要试图全部塞进对话
+- **诚实告知** — 告诉用户这套系统需要持续迭代，不是开箱即用的完美方案
+
+---
+
+## 文档引用速查
+
+安装过程中，根据用户问题引用对应文档：
+
+| 用户问题 | 引用文档 |
+|---------|---------|
+| "Agent 怎么配？" | `docs/guide/01-agent-setup.md` |
+| "频道怎么分？" | `docs/guide/02-channel-design.md` |
+| "日常怎么用？" | `docs/guide/03-daily-workflow.md` |
+| "怎么持续优化？" | `docs/guide/04-iteration-guide.md` |
+| "Obsidian 插件推荐？" | `docs/zh/obsidian-setup.md` |
+| "Cron 怎么配？" | `docs/zh/openclaw-setup.md` |
+| "Skill 怎么用？" | `docs/zh/skills-guide.md` |
+| "项目管理推荐？" | `docs/zh/project-management.md` |
+| "常见问题？" | `docs/zh/faq.md` |
+| "conversation-mining 怎么装？" | `tools/conversation-mining/AI_INSTALL.md` |
+
+---
+
+## 常见问题
+
+| 问题 | 解决方案 |
+|------|---------|
+| Obsidian 不显示 vault | 检查路径是否为目录 |
+| 脚本 "command not found" | 检查 Python/bash 版本；确认 `config.env` 已配置 |
+| convs 找不到 | 可选组件；`export-conversations.sh` 会自动跳过 |
+| Cron 不运行 | 确认 OpenClaw gateway 运行中 |
+| Knowledge lint 找不到文件 | 确认 `BRAIN_PATH` 指向 vault 根目录 |
