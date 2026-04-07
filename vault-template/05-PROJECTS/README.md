@@ -12,7 +12,7 @@ The goal is to give AI enough context to understand your active projects without
 
 ### When to Use This vs. External Tools
 
-| Scenario | Use This (04-PROJECTS) | Use External Tool |
+| Scenario | Use This (05-PROJECTS) | Use External Tool |
 |----------|------------------------|-------------------|
 | Project brief, status, one-liner | ✅ | |
 | Task breakdown, sprint board | | ❌ → Use Agora / Linear / GitHub Issues |

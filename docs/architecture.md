@@ -25,7 +25,7 @@ The nightly pipeline (02:00-04:00) automatically:
 You don't organize. You wake up to organized knowledge.
 
 ### 4. Light Project Registry, Heavy External Tools
-`04-PROJECTS/` is a lightweight index — project name, one-liner, status, external links. Agora handles multi-agent governance; Linear/GitHub Issues handle task tracking. Brain OS provides knowledge context and doesn't try to replace them.
+`05-PROJECTS/` is a lightweight index — project name, one-liner, status, external links. Agora handles multi-agent governance; Linear/GitHub Issues handle task tracking. Brain OS provides knowledge context and doesn't try to replace them.
 
 ---
 
@@ -67,7 +67,8 @@ You don't organize. You wake up to organized knowledge.
 ├─────────────────────────────────────────────────────────┤
 │                  SUPPORT LAYERS                           │
 │  02-TEAM/           Team collaboration rules              │
-│  04-PROJECTS/       Lightweight project registry          │
+│  04-CUSTOM/         Your custom zone (user-defined)        │
+│  05-PROJECTS/       Lightweight project registry          │
 │  06-PERSONAL-DOCS/  Private documents (gitignored)       │
 │  07-WORK-CONTEXT/   Work experience & context             │
 ├─────────────────────────────────────────────────────────┤
@@ -150,7 +151,7 @@ If a stage has nothing to process, it writes a no-op report and moves on. No for
 
 ## Project Management (Optional)
 
-Brain OS provides a **lightweight project registry** (`04-PROJECTS/`) — just enough to give AI context about what you're working on.
+Brain OS provides a **lightweight project registry** (`05-PROJECTS/`) — just enough to give AI context about what you're working on.
 
 For real project management, we recommend pairing with:
 - **[Agora](https://github.com/FairladyZ625/Agora)** — Multi-agent governance framework (deliberation → decision → execution)

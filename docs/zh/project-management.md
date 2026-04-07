@@ -9,7 +9,7 @@
 Brain OS 不是项目管理工具。它是一个**个人上下文系统**。
 
 对于项目管理，Brain OS 提供：
-1. **轻量项目注册**（`04-PROJECTS/`）——刚好足够给 AI 上下文
+1. **轻量项目注册**（`05-PROJECTS/`）——刚好足够给 AI 上下文
 2. **外部工具的集成推荐**
 
 ---
@@ -34,7 +34,7 @@ Brain OS 不是项目管理工具。它是一个**个人上下文系统**。
 
 ## 项目简介格式
 
-每个项目在 `04-PROJECTS/01-ACTIVE/` 中有一个 markdown 文件：
+每个项目在 `05-PROJECTS/01-ACTIVE/` 中有一个 markdown 文件：
 
 ```yaml
 ---
@@ -61,7 +61,7 @@ MVP 开发
 ## 真相源
 - 代码：`https://github.com/user/my-blog`
 - 任务：`https://github.com/user/my-blog/issues`
-- 文档：`{{BRAIN_PATH}}/04-PROJECTS/01-ACTIVE/my-project.md`
+- 文档：`{{BRAIN_PATH}}/05-PROJECTS/01-ACTIVE/my-project.md`
 
 ## 相关知识
 - [[content-generation-patterns]]
@@ -103,7 +103,7 @@ Agora 是多 agent 系统的编排和治理层。它提供：
 Brain OS 的项目简介给 agent 提供他们在做什么的**上下文**。Agora 给他们提供如何协作的**结构**。
 
 **集成模式：**
-1. 在 `04-PROJECTS/` 中创建引用 Agora 任务 URL 的项目简介
+1. 在 `05-PROJECTS/` 中创建引用 Agora 任务 URL 的项目简介
 2. Agora agent 在处理任务时从 Brain OS 读取项目上下文
 3. Agora 审议期间生成的知识回流到 `03-KNOWLEDGE/`
 
@@ -126,7 +126,7 @@ Brain OS 的项目简介给 agent 提供他们在做什么的**上下文**。Ago
 ## 集成模式
 
 ```
-Brain OS (04-PROJECTS/)
+Brain OS (05-PROJECTS/)
     │
     │  "我在做什么？"
     │  AI 读取项目简介获取上下文

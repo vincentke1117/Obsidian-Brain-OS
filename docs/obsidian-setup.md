@@ -55,7 +55,7 @@ Recommended: Pin frequently accessed folders to the top of the file explorer:
 1. `00-INBOX/`
 2. `01-PERSONAL-OPS/01-DAILY-BRIEFS/`
 3. `03-KNOWLEDGE/01-READING/04-DIGESTS/`
-4. `04-PROJECTS/01-ACTIVE/`
+4. `05-PROJECTS/01-ACTIVE/`
 
 ### Homepage Setting
 

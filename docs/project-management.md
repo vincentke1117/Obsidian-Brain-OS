@@ -7,7 +7,7 @@
 Brain OS is not a project management tool. It's a **personal context system**.
 
 For project management, Brain OS provides:
-1. **A lightweight project registry** (`04-PROJECTS/`) — just enough to give AI context
+1. **A lightweight project registry** (`05-PROJECTS/`) — just enough to give AI context
 2. **Integration recommendations** for external tools
 
 ---
@@ -32,7 +32,7 @@ For project management, Brain OS provides:
 
 ## Project Brief Format
 
-Each project gets one markdown file in `04-PROJECTS/01-ACTIVE/`:
+Each project gets one markdown file in `05-PROJECTS/01-ACTIVE/`:
 
 ```yaml
 ---
@@ -59,7 +59,7 @@ Setting up the article generation pipeline.
 ## Source of Truth
 - Code: `https://github.com/user/my-blog`
 - Tasks: `https://github.com/user/my-blog/issues`
-- Docs: `{{BRAIN_PATH}}/04-PROJECTS/01-ACTIVE/my-project.md`
+- Docs: `{{BRAIN_PATH}}/05-PROJECTS/01-ACTIVE/my-project.md`
 
 ## Related Knowledge
 - [[content-generation-patterns]]
@@ -101,7 +101,7 @@ Agora is an orchestration and governance layer for multi-agent systems. It provi
 Brain OS's project briefs give agents **context** about what they're working on. Agora gives them **structure** for how to collaborate on it.
 
 **Integration pattern:**
-1. Create project briefs in `04-PROJECTS/` referencing Agora task URLs
+1. Create project briefs in `05-PROJECTS/` referencing Agora task URLs
 2. Agora agents read project context from Brain OS when working on tasks
 3. Knowledge generated during Agora deliberation flows back into `03-KNOWLEDGE/`
 
@@ -126,7 +126,7 @@ No additional setup needed. Reference issue URLs in project briefs.
 ## Integration Pattern
 
 ```
-Brain OS (04-PROJECTS/)
+Brain OS (05-PROJECTS/)
     │
     │  "What am I working on?"
     │  AI reads project briefs for context

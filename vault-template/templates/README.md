@@ -11,7 +11,7 @@ This directory contains all reusable note templates for the Obsidian Brain OS va
 | Template File | Purpose |
 |--------------|---------|
 | `article-note-template.md` | For capturing external articles, blog posts, papers, videos, podcasts, and GitHub content. Processed by the `article-notes-integration` pipeline. |
-| `project-brief-template.md` | For registering projects in `04-PROJECTS/`. A lightweight briefing layer — not a full project management tool. |
+| `project-brief-template.md` | For registering projects in `05-PROJECTS/`. A lightweight briefing layer — not a full project management tool. |
 | `daily-brief-template.md` | For the AI-generated daily cockpit view (`01-PERSONAL-OPS/01-DAILY-BRIEFS/`). Updated each morning by the AI. |
 | `weekly-plan-template.md` | For weekly planning and scheduling (`01-PERSONAL-OPS/02-PLANS-AND-SCHEDULES/`). |
 
@@ -22,7 +22,7 @@ This directory contains all reusable note templates for the Obsidian Brain OS va
 ### When to Use Each
 
 - **New external content (article/video/paper)** → `article-note-template.md` → `03-KNOWLEDGE/02-WORKING/01-ARTICLE-NOTES/`
-- **New project or project update** → `project-brief-template.md` → `04-PROJECTS/01-ACTIVE/`
+- **New project or project update** → `project-brief-template.md` → `05-PROJECTS/01-ACTIVE/`
 - **Daily cockpit (AI-generated)** → `daily-brief-template.md` → `01-PERSONAL-OPS/01-DAILY-BRIEFS/`
 - **Weekly planning session** → `weekly-plan-template.md` → `01-PERSONAL-OPS/02-PLANS-AND-SCHEDULES/`
 

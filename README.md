@@ -41,9 +41,10 @@ Obsidian Brain OS
 │   │   ├── 03-TOPIC-DRAFTS/
 │   │   └── 04-RESEARCH-QUESTIONS/
 │   └── 99-SYSTEM/            AI pipeline outputs (don't read directly)
+├── 04-CUSTOM/                Your custom zone (define it yourself)
 ├── 05-PROJECTS/              Project registry layer
-├── 06-PERSONAL-DOCS/       Personal docs (gitignored by default)
-├── 07-WORK-CONTEXT/       Work experience & context
+├── 06-PERSONAL-DOCS/         Personal docs (gitignored by default)
+├── 07-WORK-CONTEXT/          Work experience & context
 └── templates/                Document templates
 ```
 
