@@ -1,6 +1,6 @@
 # 🧠 Obsidian Brain OS
 
-> AI-driven personal context system — fully runnable, Obsidian-native.
+> A full implementation of [Karpathy's LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) concept — automated, multi-agent, and production-ready.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -8,17 +8,41 @@ English | [中文](README_CN.md)
 
 ---
 
-## What is this?
+## The Idea (from Andrej Karpathy)
 
-**Obsidian Brain OS** is a complete, battle-tested framework for building an AI-augmented personal knowledge system. Not just a template — it's a running platform:
+> *“Instead of just retrieving from raw documents at query time, the LLM incrementally builds and maintains a persistent wiki — a structured, interlinked collection of markdown files that sits between you and the raw sources… The wiki keeps getting richer with every source you add and every question you ask.”*
+>
+> *“Obsidian is the IDE; the LLM is the programmer; the wiki is the codebase.”*
+>
+> — [Andrej Karpathy, llm-wiki (2025)](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)
 
-- 📚 **Three-layer knowledge architecture** (Reading / Working / System)
-- 🤖 **Nightly AI pipeline** (article integration → conversation mining → knowledge amplification → daily digest)
-- 📋 **Personal ops system** (daily dashboard, weekly planning, commitment tracking, morning brief)
-- 🛠️ **Automation scripts** (knowledge lint, nightly digest init, conversation export)
-- 🎯 **Agent Skills** (AI-native skills for knowledge workflows, research, writing)
-- ⏰ **Cron configs** (ready-to-use scheduling templates)
-- 🦭 **Installer Skill** (guided Socratic setup for new users)
+**Obsidian Brain OS is a complete, battle-tested implementation of this idea** — with automation, multi-agent pipelines, personal ops, and production-ready tooling built on top.
+
+### What Karpathy described → What Brain OS delivers
+
+| Karpathy’s concept | Brain OS implementation |
+|--------------------|-----------------------|
+| Raw sources layer | `00-INBOX/` + article notes ingestion |
+| The wiki (LLM-maintained) | `03-KNOWLEDGE/` (3-layer: Reading/Working/System) |
+| The schema (AGENTS.md) | `skills/` + `AGENTS.md` + `SOUL.md` |
+| Ingest workflow | `article-notes-integration` skill + Nightly Pipeline |
+| Query workflow | QMD semantic search + daily digest |
+| Lint workflow | `knowledge-lint.sh` + weekly audit cron |
+| LLM writes, you browse | Agent writes to vault; you browse in Obsidian |
+| Compounding knowledge | Cross-source synthesis via `knowledge-flywheel-amplifier` |
+| Nothing re-derived | All patterns, cross-refs compiled once and kept current |
+
+### What Brain OS adds on top
+
+Karpathy’s gist describes the *idea*. Brain OS is the *running system*:
+
+- 🤖 **Multi-agent team**: main orchestrator + writer + chronicle historian + review auditor
+- ⏰ **Nightly automation**: 4-stage pipeline runs while you sleep (article integration → conversation mining → amplification → digest)
+- 📋 **Personal ops layer**: daily dashboard, todo tracking, commitment management, morning brief
+- 🔬 **Deep research**: NotebookLM + deep-research skill for Stage 0 research seeds
+- 🎯 **22+ agent skills**: pre-built instruction sets for every workflow
+- 🔒 **Governance**: single write entry point, auditable commits, QMD semantic search
+- 🚀 **One-command install**: `bash setup.sh` — interactive, bulk placeholder replacement included
 
 ---
 

@@ -1,6 +1,6 @@
 # 🧠 Obsidian Brain OS
 
-> AI 驱动的个人上下文管理系统——开箱即用，深度 Obsidian 原生。
+> [Karpathy 的 LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) 概念的完整实现——自动化、多 Agent、生产就绪。
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -8,17 +8,41 @@
 
 ---
 
-## 这是什么？
+## 核心概念（来自 Andrej Karpathy）
 
-**Obsidian Brain OS** 是一套经过实战打磨的完整框架，用于构建 AI 增强的个人知识系统。不是普通模板——它是可运行的平台：
+> *“与其每次查询时都从原始文档中检索，不如让 LLM 增量构建和维护一个持久化的 wiki——一个结构化的、相互链接的 markdown 文件集合，位于你和原始来源之间……wiki 会随着你添加的每个来源和提出的每个问题而不断丰富。”*
+>
+> *“Obsidian 是 IDE；LLM 是程序员；wiki 是代码库。”*
+>
+> — [Andrej Karpathy, llm-wiki (2025)](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)
 
-- 📚 **三层知识架构**（阅读层 / 工作层 / 系统层）
-- 🤖 **Nightly AI 流水线**（文章整合 → 对话挖掘 → 知识放大 → 每日摘要）
-- 📋 **个人事务系统**（每日驾驶舱、周计划、承诺追踪、早间简报）
-- 🛠️ **自动化脚本**（知识审计、摘要初始化、对话导出）
-- 🎯 **Agent Skills**（AI 原生 skills，覆盖知识工作流、研究、写作）
-- ⏰ **Cron 配置**（7 个开箱即用的定时任务模板）
-- 🦭 **安装向导 Skill**（苏格拉底式引导安装）
+**Obsidian Brain OS 是这个概念的完整实现**——在此基础上叠加了自动化流水线、多 Agent 团队、个人事务系统和生产级工具链。
+
+### Karpathy 描述了什么 → Brain OS 实现了什么
+
+| Karpathy 的概念 | Brain OS 的实现 |
+|----------------|----------------|
+| Raw sources 层 | `00-INBOX/` + 文章笔记摄入 |
+| The wiki（LLM 维护） | `03-KNOWLEDGE/`（三层：阅读/工作/系统） |
+| The schema（AGENTS.md） | `skills/` + `AGENTS.md` + `SOUL.md` |
+| Ingest 工作流 | `article-notes-integration` skill + Nightly Pipeline |
+| Query 工作流 | QMD 语义搜索 + 每日摘要 |
+| Lint 工作流 | `knowledge-lint.sh` + 每周巡检 cron |
+| LLM 写入，你浏览 | Agent 写 vault；你在 Obsidian 中浏览 |
+| 知识复利增长 | 通过 `knowledge-flywheel-amplifier` 跨源综合 |
+| 不重复推导 | 所有模式、交叉引用编译一次并保持最新 |
+
+### Brain OS 在此基础上增加了什么
+
+Karpathy 的 gist 描述的是*想法*。Brain OS 是*运行中的系统*：
+
+- 🤖 **多 Agent 团队**：主调度 + 写入者 + 史官 + 巡检官
+- ⏰ **夜间自动化**：4 阶段流水线在你睡觉时自动运行
+- 📋 **个人事务层**：每日驾驶舱、待办跟踪、承诺管理、早间简报
+- 🔬 **深度研究集成**：NotebookLM + deep-research skill 做 Stage 0 研究
+- 🎯 **22+ Agent Skills**：预置指令集覆盖所有工作流
+- 🔒 **治理体系**：单一写入入口、可审计 commit、QMD 语义搜索
+- 🚀 **一键安装**：`bash setup.sh` — 交互式引导 + 批量占位符替换
 
 ---
 
