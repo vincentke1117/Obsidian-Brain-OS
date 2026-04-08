@@ -1,47 +1,39 @@
-# Conversation Knowledge Mining — Nightly Master Prompt
+Read and follow the `conversation-knowledge-flywheel` skill.
 
-> Runtime location: `/tmp/brain-os-test/workspace/conversation-knowledge-mining.prompt.md`
-> This is a template — copy to your workspace and customize.
+Target date: yesterday in Asia/Shanghai unless explicitly provided.
 
-Read and follow the `conversation-knowledge-flywheel` skill (`/tmp/brain-os-test/skills/conversation-knowledge-flywheel/SKILL.md`).
+First step (mandatory):
+- Run `scripts/init-nightly-digest.sh <brain-root> <target-date>` to ensure the daily digest skeleton and run-report directory already exist.
+- Run `scripts/export-conversations-for-nightly.sh 3` so recent AI conversations are exported into `/Volumes/LIZEYU/Converstions` before mining.
+- Run `conversation-knowledge-flywheel/scripts/preflight.sh <target-date>` before mining. If `transcript_ok=0` or `qmd_ok=0`, enter degraded mode explicitly.
+- Read the existing digest first, then only fill `## 03:00 Conversation Mining`; do not rewrite the whole file.
 
-Target date: yesterday (CST) unless explicitly provided.
-
-## First Step (mandatory)
-
-1. Run `scripts/init-nightly-digest.sh <brain-root> <target-date>` — ensure digest skeleton exists.
-2. Run `scripts/export-conversations.sh 3` — export recent AI conversations before mining.
-3. Run `conversation-knowledge-flywheel/scripts/preflight.sh <target-date>` — check transcript availability.
-   - If `transcript_ok=0` or search unavailable: enter degraded mode explicitly.
-4. Read the existing digest first, then only fill `## 03:00 Conversation Mining`.
-
-## Required Outputs (every run)
-
-1. **Daily transcript manifest**
-2. **Recommendations brief**
-3. **Machine-facing run report** → `03-KNOWLEDGE/99-SYSTEM/03-INTEGRATION-REPORTS/run-reports/YYYY-MM-DD/conversation-mining-report-YYYY-MM-DD.md`
-4. **Human-facing digest update** → `03-KNOWLEDGE/01-READING/04-DIGESTS/nightly-digest-YYYY-MM-DD.md` under `## 03:00 Conversation Mining`
-5. 1-3 conversation-derived knowledge note drafts when justified
-6. Optional: daily-learning-suggestions update
-7. Optional: candidate research seeds / context-pack candidates
+Required outputs for every run:
+1. 1 daily transcript manifest
+2. 1 recommendations brief
+3. 1 machine-facing run report → `03-KNOWLEDGE/99-SYSTEM/03-INTEGRATION-REPORTS/run-reports/YYYY-MM-DD/conversation-mining-report-YYYY-MM-DD.md`
+4. 1 human-facing digest update → `03-KNOWLEDGE/01-READING/04-DIGESTS/nightly-digest-YYYY-MM-DD.md` under section `## 03:00 Conversation Mining`
+5. 1-3 conversation-derived knowledge note drafts or writer-ready outputs when justified
+6. optional daily-learning-suggestions update
+7. optional candidate research seeds / context-pack candidates
 8. Brain commit + visibility report if Brain changed
 
-## Handoff Rules
+Handoff rules:
+- This is the 03:00 stage in the split nightly knowledge pipeline.
+- Read the shared nightly digest first to see what 01:00 and 02:00 already did.
+- If detailed debugging is needed, read machine-facing reports from `03-KNOWLEDGE/99-SYSTEM/03-INTEGRATION-REPORTS/run-reports/YYYY-MM-DD/`.
+- If 02:00 outputs are missing, continue in degraded mode and say so explicitly.
+- Upstream read order is fixed: shared nightly digest → `03-KNOWLEDGE/99-SYSTEM/03-INTEGRATION-REPORTS/run-reports/YYYY-MM-DD/` → stable indexes only if needed.
+- Do not rely on legacy report paths under `12-REVIEWS/KNOWLEDGEBASE/`.
+- Even on no-op / degraded / transcript-missing / QMD-unhealthy runs, you MUST still write both the machine-facing run report and the digest section.
 
-- This is the **03:00 stage** in the split nightly knowledge pipeline.
-- Read the shared nightly digest first (see what 02:00 already did).
-- If 02:00 outputs are missing: continue in degraded mode, say so explicitly.
-- Even on no-op / degraded / transcript-missing runs: **still write both the machine report and the digest section**.
+Digest writing rules:
+- 只回答：昨天对话有没有真正挖出东西 / 如果没有卡在哪里 / 如果有最值得看哪1-3点 / 是否生成 research seed
+- 不要把 transcript 技术细节、QMD 调试日志、长路径堆给{{USER_NAME}}
 
-## Digest Writing Rules
-
-- 只回答：昨天对话有没有挖出东西 / 如果没有卡在哪里 / 如果有最值得看哪 1-3 点 / 是否生成 research seed
-- 不要把 transcript 技术细节、调试日志、长路径堆给用户看
-
-## Guardrails
-
-- Do not dump raw transcripts into Brain
-- Do not pretend article integration happened in this stage
-- Do not force output when there is no real signal
-- Do not auto-run heavy deep research (only prepare candidate seeds)
-- Run reports belong in `99-SYSTEM/03-INTEGRATION-REPORTS/`, never in reading or working layers
+Guardrails:
+- Do not dump raw transcripts into Brain.
+- Do not pretend article integration happened here.
+- Do not force output when there is no real signal.
+- Do not auto-run heavy deep research; only prepare candidate seeds / context packs.
+- Do not write run reports into reading or working layers; they belong in `99-SYSTEM/03-INTEGRATION-REPORTS/`.
