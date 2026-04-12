@@ -14,13 +14,21 @@ jobs:
       - name: Check every skill has SKILL.md
         run: |
           FAIL=0
+          # Skip known container/meta directories
+          SKIP="recommended"
           for dir in skills/*/; do
             skill=$(basename "$dir")
-            if [ ! -f "$dir/SKILL.md" ]; then
+            # Skip container directories
+            if echo "$SKIP" | grep -qw "$skill"; then
+              echo "[skip] skills/$skill/ (container directory)"
+              continue
+            fi
+            # Accept both SKILL.md and skill.md (case-insensitive)
+            if [ ! -f "$dir/SKILL.md" ] && [ ! -f "$dir/skill.md" ]; then
               echo "❌ Missing SKILL.md in skills/$skill/"
               FAIL=1
             else
-              echo "✅ skills/$skill/SKILL.md"
+              echo "✅ skills/$skill/"
             fi
           done
           exit $FAIL

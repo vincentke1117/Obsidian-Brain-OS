@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # check-pii.sh
-# Scan all tracked files for PII: absolute paths, real names, unresolved template tokens.
+# Scan committed files for PII: absolute paths with real usernames, and Discord-style IDs.
+# Template tokens ({{PLACEHOLDER}}) in .md/.prompt.md files are intentional and excluded.
 # Usage: bash scripts/check-pii.sh [--strict]
 #   --strict: exit 1 if any hits found (used by CI)
 set -euo pipefail
@@ -15,6 +16,7 @@ echo "🔍 PII scan — $ROOT"
 echo ""
 
 # 1. Absolute paths with likely real usernames
+# Scans all file types — real paths should never appear in any committed file
 echo "── Absolute paths ──"
 RESULT=$(grep -rn \
   --include="*.md" --include="*.sh" --include="*.py" --include="*.yml" --include="*.yaml" \
@@ -31,10 +33,11 @@ else
 fi
 echo ""
 
-# 2. Unresolved template tokens ({{...}} that weren't replaced)
-echo "── Unresolved template tokens ──"
+# 2. Unresolved template tokens — only in scripts and Python files
+# .md and .prompt.md files intentionally contain {{PLACEHOLDER}} for users to fill in
+echo "── Unresolved template tokens (scripts/py only) ──"
 RESULT=$(grep -rn \
-  --include="*.md" --include="*.sh" --include="*.py" \
+  --include="*.sh" --include="*.py" \
   -E '\{\{[A-Z_]+\}\}' \
   "$ROOT" \
   --exclude-dir=".git" \
@@ -48,10 +51,11 @@ else
 fi
 echo ""
 
-# 3. Discord IDs (18-digit snowflakes that look like real IDs)
-echo "── Potential Discord IDs (18-digit) ──"
+# 3. Discord IDs (18-digit snowflakes) — only in scripts and Python files
+# Docs may reference example IDs; scripts should use env vars instead
+echo "── Potential Discord IDs in scripts/py (18-digit) ──"
 RESULT=$(grep -rn \
-  --include="*.md" --include="*.sh" --include="*.py" \
+  --include="*.sh" --include="*.py" \
   -E '\b[0-9]{17,19}\b' \
   "$ROOT" \
   --exclude-dir=".git" \

@@ -20,7 +20,7 @@ jobs:
 
           CHANGED=$(git diff --name-only "$BASE" "$HEAD" 2>/dev/null || git diff --name-only HEAD~1 HEAD)
 
-          SKILLS_CHANGED=$(echo "$CHANGED" | grep -E '^(skills|scripts|prompts)/' || true)
+          SKILLS_CHANGED=$(echo "$CHANGED" | grep -E '^(skills|scripts|prompts|setup\.sh)' || true)
           CHANGELOG_CHANGED=$(echo "$CHANGED" | grep -E '^CHANGELOG\.md$' || true)
 
           if [ -n "$SKILLS_CHANGED" ] && [ -z "$CHANGELOG_CHANGED" ]; then
