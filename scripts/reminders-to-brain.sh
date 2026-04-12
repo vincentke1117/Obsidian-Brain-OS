@@ -2,10 +2,17 @@
 # reminders-to-brain.sh
 # 从 Apple 提醒事项读取完成状态，反向 double-check Brain 待办
 # 输出：过期未完成事项列表 + 已完成事项列表（供 evening review 使用）
-# 用法: bash reminders-to-brain.sh [YYYY-MM-DD]
+# 用法: BRAIN_ROOT=/path/to/vault bash reminders-to-brain.sh [YYYY-MM-DD]
+# 环境变量:
+#   BRAIN_ROOT     - vault 根目录（必填）
+#   REMINDERS_LIST - 提醒事项列表名（默认: Brain今日）
 set -euo pipefail
 
-BRAIN_ROOT="${BRAIN_ROOT:-{{BRAIN_ROOT}}}"
+# Validate BRAIN_ROOT
+if [ -z "${BRAIN_ROOT:-}" ]; then
+  echo "ERROR: BRAIN_ROOT is not set. Usage: BRAIN_ROOT=/path/to/vault bash $0" >&2
+  exit 1
+fi
 LIST_NAME="${REMINDERS_LIST:-Brain今日}"
 DATE="${1:-$(TZ='Asia/Shanghai' date '+%Y-%m-%d')}"
 REPORT_DIR="$BRAIN_ROOT/01-PERSONAL-OPS/05-OPS-LOGS"

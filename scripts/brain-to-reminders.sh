@@ -1,10 +1,18 @@
 #!/usr/bin/env bash
 # brain-to-reminders.sh
-# 从 daily-briefing.md 提取今日事项，同步到 Apple 提醒事项「Brain今日」列表
-# 用法: bash brain-to-reminders.sh [YYYY-MM-DD]
+# 从 daily-briefing.md 提取今日事项，同步到 Apple 提醒事项列表
+# 用法: BRAIN_ROOT=/path/to/vault bash brain-to-reminders.sh [YYYY-MM-DD]
+# 环境变量:
+#   BRAIN_ROOT     - vault 根目录（必填）
+#   REMINDERS_LIST - 提醒事项列表名（默认: Brain今日）
 set -euo pipefail
 
-BRAIN_ROOT="${BRAIN_ROOT:-{{BRAIN_ROOT}}}"
+# Validate BRAIN_ROOT
+if [ -z "${BRAIN_ROOT:-}" ]; then
+  echo "ERROR: BRAIN_ROOT is not set. Usage: BRAIN_ROOT=/path/to/vault bash $0" >&2
+  exit 1
+fi
+
 BRIEFING="$BRAIN_ROOT/01-PERSONAL-OPS/01-DAILY-BRIEFS/daily-briefing.md"
 LIST_NAME="${REMINDERS_LIST:-Brain今日}"
 DATE="${1:-$(TZ='Asia/Shanghai' date '+%Y-%m-%d')}"
@@ -36,8 +44,11 @@ for sec in sections:
         lines = sec.split('\n')
         for line in lines:
             line = line.strip()
-            # Match numbered items like "1. **Title**" or "- Title"
-            m = re.match(r'^[\d\-\*]+[\.\)]\s*\*{0,2}(.+?)\*{0,2}\s*(?:—.*)?$', line)
+            # Match: numbered (1. / 1)) or bullet (- / * / - [ ] / - [x])
+            m = re.match(
+                r'^(?:(?:\d+[.)\s])|(?:[-*]\s*(?:\[[ xX]\]\s*)?))\s*\*{0,2}(.+?)\*{0,2}\s*(?:—.*)?$',
+                line
+            )
             if m:
                 title = m.group(1).strip()
                 # Remove markdown bold/italic
