@@ -12,7 +12,7 @@ delivery_mode: webhook
 
 每日知识图谱生成任务（05:00）。
 
-步骤0：先执行 `TZ="Asia/Shanghai" date "+%Y-%m-%d %A %H:%M"` 获取**今天日期与星期**，后续所有 YYYY-MM-DD 都必须使用系统值。
+步骤0：先执行系统日期命令（如 `date "+%Y-%m-%d %A %H:%M %Z"`）获取**今天日期、星期与时区**，后续所有 YYYY-MM-DD 都必须使用系统值，默认使用运行机器的本地时区。
 
 步骤1：运行脚本生成今日知识图谱 Canvas：
 python3 {{USER_HOME}}/.openclaw/workspace/scripts/knowledge-graph-canvas.py
