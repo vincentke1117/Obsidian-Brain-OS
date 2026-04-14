@@ -1,6 +1,6 @@
 # 🧠 Obsidian Brain OS
 
-> A full implementation of [Karpathy's LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) concept — automated, multi-agent, and production-ready.
+> Inspired by [Karpathy's LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f), but pushed further into a **digital twin operating system** — where your knowledge, tasks, conversations, boundaries, and agent workflows are continuously compiled into a system that can assist, coordinate, and act within controlled scope.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
