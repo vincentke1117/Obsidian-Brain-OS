@@ -4,7 +4,15 @@ All notable changes to Obsidian Brain OS are documented here.
 
 ---
 
-## [0.6.0] — 2026-04-17
+## [0.6.1] — 2026-04-18
+
+### Added
+- **`prompts/cron/knowledge-soft-link-sync-nightly.md`** — Added a standalone nightly prompt for Knowledge ↔ Project soft-link sync so project references can be repaired in both directions without coupling to the main 02:00–04:00 pipeline.
+- **`scripts/sync-knowledge-soft-links.py`** — Added a reusable script to sync explicitly declared knowledge ↔ project relationships across knowledge notes, project briefs, and the projects index.
+
+### Changed
+- **`scripts/knowledge-lint.sh`** — Upgraded the lint script to be project-aware: validates `project_ref` and `related_projects`, checks project-side knowledge paths, and writes both a review report and a run-report suitable for nightly operations.
+
 
 ### Added
 - **`scripts/check-brain-config-leaks.sh`** — Added a dedicated config-leak scanner to catch author-specific vault names, private paths, internal names, and fixed IDs before they reach OSS.
