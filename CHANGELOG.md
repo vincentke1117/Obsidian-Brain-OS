@@ -4,7 +4,7 @@ All notable changes to Obsidian Brain OS are documented here.
 
 ---
 
-## [0.6.0] — 2026-04-17
+## [0.6.1] — 2026-04-18
 
 ### Added
 - **`prompts/cron/knowledge-soft-link-sync-nightly.md`** — Added a standalone nightly prompt for Knowledge ↔ Project soft-link sync so project references can be repaired in both directions without coupling to the main 02:00–04:00 pipeline.
