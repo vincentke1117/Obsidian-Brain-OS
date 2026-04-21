@@ -4,6 +4,17 @@
 
 ---
 
+## [1.0.0] — 2026-04-21
+
+### 新增 / Added
+- **`prompts/cron/qmd-index-refresh-daily.md`** — 新增每日 QMD 索引刷新 cron 模板，用于保持知识库与工作区检索新鲜度。
+- **`prompts/cron/knowledge-librarian-3day.md`** — 新增每 3 天一次的知识库整理 cron 模板，覆盖 frontmatter 修复、链接审计、tag 归一化、重复检测与 digest 合并。
+- **`prompts/cron/knowledge-governance-10day.md`** — 新增每 10 天一次的知识库治理 cron 模板，覆盖 domain 健康评估、语义漂移检测、过时内容识别、归档建议与 MOC 复核。
+
+### 变更 / Changed
+- 开源版知识工作流不再只覆盖知识生产，也开始把保鲜、整理与治理作为可复用的运行模式纳入主线。
+- **`docs/getting-started.md`**、**`docs/zh/getting-started.md`** 与 **`INSTALL_FOR_AGENTS.md`** — 补充安装与 onboarding 说明，明确新的治理栈是“最小成功之后的分阶段扩展”，不是默认首装即全开。
+
 ## [0.7.0] — 2026-04-20
 
 ### 新增 / Added
@@ -21,11 +32,19 @@
 - 修复了“文档在讲安装分层，但 setup 实际仍像一把全装”的 onboarding 漂移问题。
 - 移除了 `setup.sh` 中仅适配 macOS 的原地替换行为，提升 Linux 环境和 CI 中的 agent 安装兼容性。
 
-## [0.6.0] — 2026-04-17
+## [0.6.1] — 2026-04-18
 
 ### 新增 / Added
 - **`prompts/cron/knowledge-soft-link-sync-nightly.md`** — 新增独立 nightly prompt，用于执行 Knowledge ↔ Project 软关联双向同步，让 project 引用修复与主 02:00–04:00 pipeline 解耦。
 - **`scripts/sync-knowledge-soft-links.py`** — 新增可复用脚本，用于在 knowledge notes、project briefs 与 projects index 之间同步显式声明的 Knowledge ↔ Project 关系。
+
+### 变更 / Changed
+- **`scripts/knowledge-lint.sh`** — 升级为 project-aware 的 lint 脚本：新增 `project_ref` / `related_projects` 校验、project 侧知识路径检查，并同时写出 review report 与 run-report，适合接入 nightly 运维。
+
+
+## [0.6.0] — 2026-04-17
+
+### 新增 / Added
 
 ### 变更 / Changed
 - **`scripts/knowledge-lint.sh`** — 升级为 project-aware 的 lint 脚本：新增 `project_ref` / `related_projects` 校验、project 侧知识路径检查，并同时写出 review report 与 run-report，适合接入 nightly 运维。

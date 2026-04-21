@@ -21,6 +21,17 @@ All notable changes to Obsidian Brain OS are documented here.
 - Removed onboarding drift where the repo described install layering, but the setup flow still behaved like a broad all-in install.
 - Removed macOS-only in-place replacement behavior from `setup.sh`, improving Linux friendliness for agent-driven installs and CI.
 
+## [1.0.0] — 2026-04-21
+
+### Added
+- **`prompts/cron/qmd-index-refresh-daily.md`** — Added a daily QMD refresh cron template to keep vault and workspace search indexes fresh.
+- **`prompts/cron/knowledge-librarian-3day.md`** — Added a 3-day knowledge maintenance cron template for frontmatter repair, link audit, tag normalization, duplicate detection, and digest consolidation.
+- **`prompts/cron/knowledge-governance-10day.md`** — Added a 10-day governance cron template for domain health review, semantic drift detection, staleness review, archive suggestions, and MOC review.
+
+### Changed
+- The OSS knowledge workflow now covers not only knowledge creation, but also freshness, maintenance, and governance as a reusable operating pattern.
+- **`docs/getting-started.md`**, **`docs/zh/getting-started.md`**, and **`INSTALL_FOR_AGENTS.md`** — Updated install and onboarding guidance so agents and users understand that the new governance stack is a staged expansion after a working minimal setup, not a default first-run requirement.
+
 ## [0.6.1] — 2026-04-18
 
 ### Added
