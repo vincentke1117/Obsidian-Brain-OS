@@ -92,6 +92,18 @@ Each skill is a directory containing at least a `SKILL.md` file with:
 
 **When it runs:** On demand (user-triggered)
 
+### 7. `brain-vault-governance`
+
+**What it does:** Helps agents place, move, classify, and audit durable vault files without creating duplicated truth sources or structural drift.
+
+**When it runs:** Before writing formal plans, creating folders, moving notes, ingesting raw assets, or running governance audits.
+
+**Key behaviors:**
+- Separates plans, prompts, knowledge notes, tasks, and raw assets
+- Requires inspecting the real vault structure before creating folders
+- Encourages link-aware note moves
+- Keeps raw evidence out of Git-managed knowledge layers
+
 ---
 
 ## Recommended General Skills

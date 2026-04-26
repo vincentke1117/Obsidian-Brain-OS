@@ -13,6 +13,7 @@ Brain OS 将 Obsidian 打造为一个**活的个人上下文系统**——不仅
 完成设置后：
 - 你只需捕获一次（文章、想法、待办）
 - AI 不只是帮你生产知识，也可以持续帮你保鲜、整理和治理知识系统
+- Agent 会用 `brain-vault-governance` 判断持久文件该放哪里，再写入或移动
 - 你醒来时看到的是精筛摘要、有序知识库和每日简报
 
 ---
@@ -39,6 +40,11 @@ Brain OS 将 Obsidian 打造为一个**活的个人上下文系统**——不仅
 - **Advanced**：只有在你明确要完整多 Agent / nightly / 治理系统时再选
 
 先看：[安装档位说明](../install-profiles.md)
+
+最小安装跑通后，建议先启用治理能力，再开启重型自动化：
+- 阅读 [治理巡检 Cron 指南](governance-cron-guide.md)
+- 安装或复制 `skills/brain-vault-governance/`
+- 可选导入 `cron-examples/governance.json`，开启每周只读巡检
 
 ---
 

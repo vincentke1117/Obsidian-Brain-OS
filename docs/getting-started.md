@@ -11,6 +11,7 @@ Brain OS turns Obsidian into a **living personal context system** — not just a
 After setup:
 - You capture things once (articles, thoughts, todos)
 - AI can help keep the knowledge system fresh, organized, and governed over time
+- Agents use `brain-vault-governance` to decide where durable files belong before they write or move them
 - You wake up to a curated digest, organized knowledge, and a daily briefing
 
 ---
@@ -37,6 +38,11 @@ Use:
 - **Advanced** only if you explicitly want the full multi-agent operating system
 
 See [install profiles](install-profiles.md).
+
+After the minimal install works, enable governance before heavy automation:
+- read [Governance Cron Guide](governance-cron-guide.md)
+- install or copy `skills/brain-vault-governance/`
+- optionally import `cron-examples/governance.json` for a weekly read-only audit
 
 ---
 

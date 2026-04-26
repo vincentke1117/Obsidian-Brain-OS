@@ -4,6 +4,18 @@ All notable changes to Obsidian Brain OS are documented here.
 
 ---
 
+## [1.3.0] — 2026-04-26
+
+### Added
+- **`skills/brain-vault-governance/`** — Added a reusable vault governance skill for agents writing, moving, classifying, and auditing durable Brain OS vault files.
+- **`docs/governance-sync-boundary.md`** / **`docs/zh/governance-sync-boundary.md`** — Added bilingual guidance for deciding what should be synced from a private Brain OS deployment into the public repository.
+- **`docs/release-versioning.md`** / **`docs/zh/release-versioning.md`** — Added bilingual release versioning rules for patch / minor / major decisions and changelog expectations.
+- **`docs/governance-cron-guide.md`** / **`docs/zh/governance-cron-guide.md`** — Added bilingual guidance for running read-only vault governance audits.
+- **`prompts/cron/brain-governance-audit.prompt.md`** and **`cron-examples/governance.json`** — Added an anonymized governance audit prompt and importable OpenClaw cron example.
+
+### Changed
+- **`README.md`**, **`README_EN.md`**, **`docs/getting-started.md`**, **`docs/zh/getting-started.md`**, **`docs/skills-guide.md`**, **`docs/zh/skills-guide.md`**, **`docs/zh/README.md`**, **`INSTALL_FOR_AGENTS.md`**, and **`cron-examples/README.md`** — Added discoverability and setup guidance for vault governance.
+
 ## [0.7.0] — 2026-04-20
 
 ### Added

@@ -37,6 +37,10 @@ Do **not** enable advanced modules by default:
 
 These come later.
 
+Recommended after the minimal install succeeds:
+- install `brain-vault-governance` if the user wants agents to write, move, classify, or audit durable vault files
+- read `docs/governance-cron-guide.md` before enabling scheduled governance audits
+
 ---
 
 ## Step 1: Ask 4 short questions

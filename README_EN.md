@@ -59,6 +59,7 @@ Karpathy’s gist describes the *idea*. Brain OS is the *running system*:
 - 🔬 **Deep research**: NotebookLM + deep-research skill for Stage 0 research seeds
 - 🎯 **22+ agent skills**: pre-built instruction sets for every workflow
 - 🔒 **Governance**: single write entry point, auditable commits, QMD semantic search
+- 🧭 **Vault governance skill**: `brain-vault-governance` helps agents decide where plans, prompts, knowledge notes, tasks, and raw assets belong
 - 🚀 **One-command install**: `bash setup.sh` — interactive, bulk placeholder replacement included
 
 ---
@@ -104,10 +105,13 @@ Start now — let's get Brain OS running!
 1. **[Component Guide (⭐ Start Here)](docs/component-guide.md)** ⭐ — Everything included, what each component does, 5-min quick start
 2. **[Release Playbook](docs/agent-playbooks/release-playbook.md)** — Complete release SOP (bilingual)
 3. **[Observer Playbook](docs/agent-playbooks/observer-playbook.md)** — Observer skill usage guide
-4. **[PII Deidentification Guide](docs/references/pii-deidentification-guide.md)** — How to keep private data out of the repo
-5. **[Cron Prompt Writing Guide](docs/writing-cron-prompts.md)** — Best practices for reliable cron prompts
-6. **[Skill Authoring Guide](docs/skill-authoring-guide.md)** — How to write well-structured skills
-7. **[Nightly Pipeline Guide (Detailed)](docs/nightly-pipeline-guide.md)** — Full pipeline architecture & handoff protocol
+4. **[Vault Governance Skill](skills/brain-vault-governance/README.md)** — Where agents should put plans, prompts, knowledge notes, tasks, and raw assets
+5. **[Governance Sync Boundary](docs/governance-sync-boundary.md)** — What belongs in OSS vs private deployments
+6. **[Release Versioning Guide](docs/release-versioning.md)** — Patch / minor / major rules and bilingual changelog expectations
+7. **[PII Deidentification Guide](docs/references/pii-deidentification-guide.md)** — How to keep private data out of the repo
+8. **[Cron Prompt Writing Guide](docs/writing-cron-prompts.md)** — Best practices for reliable cron prompts
+9. **[Skill Authoring Guide](docs/skill-authoring-guide.md)** — How to write well-structured skills
+10. **[Nightly Pipeline Guide (Detailed)](docs/nightly-pipeline-guide.md)** — Full pipeline architecture & handoff protocol
 
 ### 📖 User Docs
 
