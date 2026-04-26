@@ -4,7 +4,7 @@
 
 ---
 
-## [未发布 / Unreleased]
+## [1.3.0] — 2026-04-26
 
 ### 新增 / Added
 - **`skills/brain-vault-governance/`** — 新增可复用 vault 治理 skill，供 agent 在写入、移动、分类、巡检 Brain OS vault 持久文件前使用。

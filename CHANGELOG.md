@@ -4,7 +4,7 @@ All notable changes to Obsidian Brain OS are documented here.
 
 ---
 
-## [Unreleased]
+## [1.3.0] — 2026-04-26
 
 ### Added
 - **`skills/brain-vault-governance/`** — Added a reusable vault governance skill for agents writing, moving, classifying, and auditing durable Brain OS vault files.
