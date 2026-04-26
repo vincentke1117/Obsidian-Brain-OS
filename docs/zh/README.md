@@ -28,7 +28,10 @@
 17. [Chronicle 史官系统](chronicle-agent.md)
 18. [Skills 使用指南](skills-guide.md)
 19. [项目管理](project-management.md)
-20. [常见问题](faq.md)
+20. [治理同步边界](governance-sync-boundary.md)
+21. [发版与版本号指南](release-versioning.md)
+22. [治理巡检 Cron 指南](governance-cron-guide.md)
+23. [常见问题](faq.md)
 
 ---
 

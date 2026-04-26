@@ -31,6 +31,14 @@ Personal operations automation jobs:
 | `personal-ops-todo-reminder-2000` | 20:00 daily | Evening todo follow-up |
 | `knowledgebase-commit-patrol-30m` | Every 30 min | Auto-commit pending Brain changes |
 
+### `governance.json`
+
+Read-only vault governance audit:
+
+| Job | Schedule | Purpose |
+|-----|----------|---------|
+| `brain-governance-audit-weekly` | Mon 01:30 | Check plan/prompt boundaries, raw asset leakage, duplicate truth-source risks, and structural drift |
+
 ## Placeholders to Replace
 
 Before importing, search and replace all placeholders:
@@ -58,6 +66,7 @@ Before importing, search and replace all placeholders:
 ```bash
 openclaw cron import cron-examples/nightly-pipeline.json
 openclaw cron import cron-examples/personal-ops.json
+openclaw cron import cron-examples/governance.json
 ```
 
 ### Option 2: Manual merge

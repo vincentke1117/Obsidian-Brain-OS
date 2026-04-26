@@ -1,0 +1,39 @@
+{
+  "version": 2,
+  "_meta": {
+    "_comment": "Brain OS governance audit cron example. Prompt content lives in prompts/cron/brain-governance-audit.prompt.md.",
+    "_placeholders": {
+      "{{BRAIN_ROOT}}": "Path to your Obsidian vault",
+      "{{WORKSPACE_ROOT}}": "OpenClaw workspace path",
+      "{{MAIN_MODEL}}": "Model ID for main agent tasks"
+    }
+  },
+  "jobs": [
+    {
+      "id": "c2b48c20-2d5b-4e3d-9db8-7c5fa0c9c4a1",
+      "name": "brain-governance-audit-weekly",
+      "description": "Weekly read-only Brain OS vault governance audit",
+      "enabled": true,
+      "schedule": {
+        "kind": "cron",
+        "expr": "30 1 * * 1",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "【Scheduled task】Read the governance audit prompt first:\n\n📄 File path: {{BRAIN_ROOT}}/04-SYSTEM/prompts/cron/brain-governance-audit.prompt.md\n\nFollow it strictly. If the file does not exist, report the error and stop.",
+        "model": "{{MAIN_MODEL}}",
+        "timeoutSeconds": 1200,
+        "thinking": "medium"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "discord"
+      },
+      "deleteAfterRun": false,
+      "agentId": "main"
+    }
+  ]
+}

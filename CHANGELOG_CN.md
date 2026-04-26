@@ -9,6 +9,12 @@
 ### 新增 / Added
 - **`skills/brain-vault-governance/`** — 新增可复用 vault 治理 skill，供 agent 在写入、移动、分类、巡检 Brain OS vault 持久文件前使用。
 - **`docs/governance-sync-boundary.md`** / **`docs/zh/governance-sync-boundary.md`** — 新增中英双语同步边界文档，用于判断私有 Brain OS 部署中的哪些资产适合进入公开仓库。
+- **`docs/release-versioning.md`** / **`docs/zh/release-versioning.md`** — 新增中英双语版本号指南，说明 patch / minor / major 判定与 changelog 要求。
+- **`docs/governance-cron-guide.md`** / **`docs/zh/governance-cron-guide.md`** — 新增中英双语治理巡检 cron 指南。
+- **`prompts/cron/brain-governance-audit.prompt.md`** 与 **`cron-examples/governance.json`** — 新增匿名化治理巡检 prompt 与可导入 OpenClaw cron 示例。
+
+### 变更 / Changed
+- **`README.md`**、**`README_EN.md`**、**`docs/getting-started.md`**、**`docs/zh/getting-started.md`**、**`docs/skills-guide.md`**、**`docs/zh/skills-guide.md`**、**`docs/zh/README.md`**、**`INSTALL_FOR_AGENTS.md`** 与 **`cron-examples/README.md`** — 补充 vault 治理能力的入口与安装使用说明。
 
 ## [1.2.0] — 2026-04-23
 
