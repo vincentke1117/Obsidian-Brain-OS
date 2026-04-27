@@ -4,6 +4,15 @@
 
 ---
 
+## [1.4.0] — 2026-04-27
+
+### 变更 / Changed
+- **`tools/conversation-mining/`** — 已同步 `FairladyZ625/conversation-mining` 上游最新实现，包括新版导出器、viewer 资产、Codex 会话时间排序修复、transcript 导出辅助逻辑与 CLI 行为。
+- **`tools/conversation-mining/pyproject.toml`** — 内嵌工具版本从 `0.1.0` 提升到 `0.2.0`，方便下游 agent 安装器识别新的聊天记录挖掘能力。
+
+### 修复 / Fixed
+- 确保用户通过 Obsidian Brain OS 安装或 vendor Conversation Mining 时，拿到的是最新版 Agent 聊天记录导出 / 挖掘脚本，而不是旧的内嵌副本。
+
 ## [1.3.0] — 2026-04-26
 
 ### 新增 / Added

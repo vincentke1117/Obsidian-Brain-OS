@@ -4,6 +4,15 @@ All notable changes to Obsidian Brain OS are documented here.
 
 ---
 
+## [1.4.0] — 2026-04-27
+
+### Changed
+- **`tools/conversation-mining/`** — Synced the embedded Conversation Mining tool to the latest upstream implementation from `FairladyZ625/conversation-mining`, including the updated exporter, viewer assets, Codex recency indexing fixes, transcript export helpers, and CLI behavior.
+- **`tools/conversation-mining/pyproject.toml`** — Bumped the embedded tool version from `0.1.0` to `0.2.0` so downstream agent installers can identify the newer conversation mining capability.
+
+### Fixed
+- Ensured users who install or vendor Conversation Mining through Obsidian Brain OS receive the latest agent conversation export/mining scripts instead of the older embedded copy.
+
 ## [1.3.0] — 2026-04-26
 
 ### Added
