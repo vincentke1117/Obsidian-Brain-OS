@@ -22,6 +22,6 @@ You are installing or reviewing the OpenClaw Brain OS distribution pack.
 
 ## First implementation milestone
 
-PR2 adds conservative safe apply, conflict detection, backup, and rollback.
+PR3 adds bundled public skills and profile-specific cron templates on top of conservative safe apply.
 
 Never overwrite conflicting user config by default. Apply must require explicit `--yes`, cron jobs must remain disabled, and rollback must restore config backups without deleting user workspace, skills, or vault files.

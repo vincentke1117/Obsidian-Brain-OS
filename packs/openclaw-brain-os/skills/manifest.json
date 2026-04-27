@@ -14,8 +14,16 @@
     "brain-os-release"
   ],
   "notes": [
-    "PR1a records the skill install manifest only.",
-    "Later PRs may bundle sanitized skill copies under skills/bundled/.",
-    "If a skill already exists at the target, skip by default and report it."
+    "If a skill already exists at the target, skip by default and report it.",
+    "Bundled skills are sanitized copies from the public repository skills/ directory."
+  ],
+  "bundled": [
+    "brain-vault-governance",
+    "article-notes-integration",
+    "conversation-knowledge-flywheel",
+    "knowledge-flywheel-amplifier",
+    "personal-ops-driver",
+    "observer",
+    "brain-os-release"
   ]
 }

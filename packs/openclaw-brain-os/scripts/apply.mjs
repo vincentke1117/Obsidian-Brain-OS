@@ -21,6 +21,9 @@ if (!yes) {
 }
 const answers = readJson(answersPath, {});
 const manifest = readJson(path.join(packDir, 'manifest.json'), {});
+const profileId = answers.profile || manifest.installDefaults?.profile || 'minimal';
+const profile = (manifest.profiles || []).find((p) => p.id === profileId) || {};
+const selectedSkills = new Set(profile.skills || []);
 const summary = readJson(path.join(previewDir, 'summary.json'), {});
 const userHome = answers.userHome || process.env.HOME || '';
 const openclawRoot = answers.openclawRoot || summary.paths?.openclawRoot || path.join(userHome, '.openclaw');
@@ -77,6 +80,19 @@ const workspacePreview = path.join(previewDir, 'workspaces');
 if (fs.existsSync(workspacePreview)) {
   for (const agent of fs.readdirSync(workspacePreview)) {
     copyDirMissingOnly(path.join(workspacePreview, agent), path.join(openclawRoot, 'agents', agent, 'agent'), changes);
+  }
+}
+
+
+const bundledSkills = path.join(packDir, 'skills', 'bundled');
+if (fs.existsSync(bundledSkills)) {
+  for (const skill of fs.readdirSync(bundledSkills)) {
+    if (selectedSkills.size && !selectedSkills.has(skill)) continue;
+    const src = path.join(bundledSkills, skill);
+    const dest = path.join(skillsRoot, skill);
+    if (fs.existsSync(path.join(src, 'SKILL.md'))) {
+      copyDirMissingOnly(src, dest, changes);
+    }
   }
 }
 

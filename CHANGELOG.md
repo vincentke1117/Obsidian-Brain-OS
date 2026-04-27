@@ -4,6 +4,16 @@ All notable changes to Obsidian Brain OS are documented here.
 
 ---
 
+## [1.5.6] — 2026-04-27
+
+### Added
+- **OpenClaw Brain OS pack profiles** — Added profile-specific cron patch templates for minimal, knowledge, personal-ops, team, and full profiles, generated from public cron examples with all jobs disabled by default.
+- **Bundled skills** — Added sanitized public skill bundles for Brain vault governance, article integration, conversation flywheel, knowledge amplifier, personal ops, observer, and Brain OS release workflows.
+- **Skill installation support** — Apply now copies selected bundled skills in missing-only mode according to the selected profile.
+
+### Changed
+- **`packs/openclaw-brain-os/manifest.json`** — Bumped pack preview version to `1.0.0-alpha.4` and aligned profile cron groups.
+
 ## [1.5.5] — 2026-04-27
 
 ### Added

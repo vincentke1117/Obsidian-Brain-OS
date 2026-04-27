@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "_meta": {
+    "_pack_profile": "minimal",
+    "_pack_note": "Generated profile cron template; jobs default disabled."
+  },
+  "jobs": []
+}

@@ -70,7 +70,10 @@ function copyRenderedDir(srcDir, destDir) {
 fs.rmSync(outDir, { recursive: true, force: true });
 ensureDir(outDir);
 writeRendered(path.join(packDir, 'openclaw.json.patch.template'), path.join(outDir, 'openclaw.config-patch.json'));
-writeRendered(path.join(packDir, 'cron/jobs.patch.template'), path.join(outDir, 'cron.jobs-patch.json'));
+
+const profileCronTemplate = path.join(packDir, 'cron', `${profileId}.jobs.patch.template`);
+const cronTemplate = fs.existsSync(profileCronTemplate) ? profileCronTemplate : path.join(packDir, 'cron/jobs.patch.template');
+writeRendered(cronTemplate, path.join(outDir, 'cron.jobs-patch.json'));
 
 const selectedAgents = profile.agents || ['main'];
 for (const agent of selectedAgents) {
@@ -91,6 +94,7 @@ const summary = {
   profile: profileId,
   selectedAgents,
   selectedSkills: profile.skills || [],
+  bundledSkills: fs.existsSync(path.join(packDir, 'skills/bundled')) ? fs.readdirSync(path.join(packDir, 'skills/bundled')).filter((name) => fs.existsSync(path.join(packDir, 'skills/bundled', name, 'SKILL.md'))).sort() : [],
   selectedCronJobs: profile.cronJobs || [],
   paths: { openclawRoot, skillsRoot, brainRoot, canonicalVaultTemplate: canonicalVault },
   generatedFiles: [
@@ -101,7 +105,7 @@ const summary = {
   ],
   notes: [
     'This preview does not modify user files.',
-    'Apply/rollback is planned for a later PR.',
+    'Safe apply and rollback are available with explicit --yes.',
     'Cron jobs remain disabled by default.'
   ]
 };
