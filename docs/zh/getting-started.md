@@ -84,6 +84,8 @@ bash setup.sh --non-interactive --profile minimal
 
 如果你想先理解安装分层，再运行 setup，请看：[安装档位说明](../install-profiles.md)
 
+如果你要看完整功能、安装资产和验证方法的 SSOT，阅读 [功能清单](feature-matrix.md)。
+
 ---
 
 ## 第三步：打开你的 Vault
@@ -160,7 +162,22 @@ cp -r skills/personal-ops-driver/ ~/.agents/skills/
 
 ---
 
-## 第七步：设置 Cron Jobs（OpenClaw）
+## 第七步：配置 OpenClaw Agents 和频道
+
+导入 cron jobs 之前，先配置 `~/.openclaw/openclaw.json` 中的 agents 和 channels。
+
+起步示例：
+
+```text
+examples/openclaw/openclaw.example.json
+examples/openclaw/openclaw.multi-channel.example.json
+```
+
+Discord 多频道路由、cron 投递目标和 QMD 边界说明见 [OpenClaw 配置指南](openclaw-config-guide.md)。
+
+---
+
+## 第八步：设置 Cron Jobs（OpenClaw）
 
 ```bash
 # 导入夜间 pipeline 任务
@@ -176,7 +193,7 @@ openclaw cron import cron-examples/personal-ops.json
 
 ---
 
-## 第八步：先拿到一个小成功后，再加治理层
+## 第九步：先拿到一个小成功后，再加治理层
 
 当最小安装跑通后，你可以把 Brain OS 从“知识生产”继续扩展到更完整的知识系统：
 
@@ -192,7 +209,7 @@ openclaw cron import cron-examples/personal-ops.json
 
 这样更容易让新用户先拿到一个确定成功，再逐层上治理能力。
 
-## 第九步：先拿到一个小成功
+## 第十步：先拿到一个小成功
 
 推荐的第一个成功点：
 - 在 Obsidian 里打开 vault
@@ -201,6 +218,8 @@ openclaw cron import cron-examples/personal-ops.json
 - 只启一个相关 cron profile
 
 拿到第一个成功之后，再决定是否启用 Observer、CI/CD、QMD 或完整 nightly system。
+
+QMD 是可选且需要单独安装的检索引擎；大型 vault 和 conversation mining 推荐使用，但它不是 OpenClaw 默认内置组件。
 
 ---
 
