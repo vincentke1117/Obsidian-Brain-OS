@@ -102,28 +102,32 @@ examples/openclaw/openclaw.multi-channel.example.json
 
 ---
 
-## 频道级 Prompt Profile
+## 频道级 systemPrompt
 
-如果每个 Discord 频道都需要不同的“system prompt”，推荐做法是：把频道绑定到专用 agent，并给该 agent 一个独立 workspace：
+如果一个 Discord account / main agent 服务多个专用频道，推荐在下面这个位置配置每个频道自己的 prompt：
 
 ```text
-# Channel
-#knowledge  -> agentId: knowledge-channel -> ~/.openclaw/workspace-knowledge/AGENTS.md
-#personal   -> agentId: personal-ops-channel -> ~/.openclaw/workspace-personal-ops/AGENTS.md
-#oss-sync   -> agentId: oss-sync-channel -> ~/.openclaw/workspace-oss-sync/AGENTS.md
+channels.discord.accounts.<accountId>.guilds.<guildId>.channels.<channelId>.systemPrompt
 ```
 
-这样可以保留 OpenClaw 正常组装的 prompt、tools、memory 行为和安全指令，同时让每个频道拥有自己的 `AGENTS.md`、`USER.md` 和 `references/`。
+这个模式适用于：同一个 agent 在不同频道承担不同职责。例如：
 
-见：
+| 频道 | Prompt 角色 |
+|---|---|
+| `{{MAIN_CHANNEL_ID}}` | 主协调 |
+| `{{PERSONAL_OPS_CHANNEL_ID}}` | 个人事务管理 |
+| `{{KNOWLEDGE_INGEST_CHANNEL_ID}}` | 文章 / 知识沉淀 |
+| `{{KNOWLEDGE_QUERY_CHANNEL_ID}}` | 知识库查询与引用 |
+| `{{OSS_SYNC_CHANNEL_ID}}` | 开源仓库同步与 PR |
+| `{{CRON_NOTIFICATION_CHANNEL_ID}}` | 定时任务通知 |
+
+可复制示例见：
 
 ```text
 examples/openclaw/openclaw.channel-prompts.example.json
-examples/agent-workspace/AGENTS.example.md
-examples/agent-workspace/references/
 ```
 
-高级选项：OpenClaw 也支持 `agents.list[].systemPromptOverride`，但它会替换完整的 assembled system prompt。只有在受控实验或窄域 agent 中明确需要覆盖默认 bootstrap 时才建议使用。
+这和 `agents.list[].systemPromptOverride` 不是一回事。`systemPromptOverride` 会替换 agent 完整的 OpenClaw assembled system prompt，属于高级逃生口。对于一个 account / agent 横跨多个 Discord 频道的场景，频道级 `systemPrompt` 才是正常的频道专用提示词机制。
 
 ---
 

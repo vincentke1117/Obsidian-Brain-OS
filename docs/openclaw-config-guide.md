@@ -94,28 +94,32 @@ Ordering matters. Put specific channel bindings first, then a final guild-level 
 
 ---
 
-## Channel-specific prompt profiles
+## Channel-specific system prompts
 
-If each Discord channel should have a different “system prompt”, prefer binding that channel to a dedicated agent with its own workspace:
+If one Discord account / main agent serves multiple specialized channels, configure per-channel prompts under:
 
 ```text
-# Channel
-#knowledge  -> agentId: knowledge-channel -> ~/.openclaw/workspace-knowledge/AGENTS.md
-#personal   -> agentId: personal-ops-channel -> ~/.openclaw/workspace-personal-ops/AGENTS.md
-#oss-sync   -> agentId: oss-sync-channel -> ~/.openclaw/workspace-oss-sync/AGENTS.md
+channels.discord.accounts.<accountId>.guilds.<guildId>.channels.<channelId>.systemPrompt
 ```
 
-This keeps OpenClaw's normal assembled prompt, tools, memory behavior, and safety instructions intact, while giving each channel its own `AGENTS.md`, `USER.md`, and `references/`.
+This is the pattern to use when the same agent should behave differently in different channels, for example:
 
-See:
+| Channel | Prompt role |
+|---|---|
+| `{{MAIN_CHANNEL_ID}}` | main coordinator |
+| `{{PERSONAL_OPS_CHANNEL_ID}}` | personal ops driver |
+| `{{KNOWLEDGE_INGEST_CHANNEL_ID}}` | article / knowledge ingestion |
+| `{{KNOWLEDGE_QUERY_CHANNEL_ID}}` | vault query and citation |
+| `{{OSS_SYNC_CHANNEL_ID}}` | public repo sync and PR work |
+| `{{CRON_NOTIFICATION_CHANNEL_ID}}` | scheduled job notifications |
+
+See the copyable example:
 
 ```text
 examples/openclaw/openclaw.channel-prompts.example.json
-examples/agent-workspace/AGENTS.example.md
-examples/agent-workspace/references/
 ```
 
-Advanced option: OpenClaw also supports `agents.list[].systemPromptOverride`, but it replaces the full assembled system prompt. Use it only for controlled experiments or narrow agents where you intentionally want to override the normal bootstrap.
+This is different from `agents.list[].systemPromptOverride`. `systemPromptOverride` replaces the full OpenClaw-assembled system prompt for an agent and should be treated as an advanced escape hatch. Per-channel `systemPrompt` is the normal channel-specialization mechanism for one account / agent working across many Discord channels.
 
 ---
 

@@ -8,11 +8,11 @@ All notable changes to Obsidian Brain OS are documented here.
 
 ### Added
 - **`examples/agent-workspace/AGENTS.example.md`**, **`examples/agent-workspace/USER.example.md`**, and **`examples/agent-workspace/references/`** — Added sanitized copyable agent workspace bootstrap templates.
-- **`examples/openclaw/openclaw.channel-prompts.example.json`** — Added an OpenClaw example for channel-specific prompt profiles using channel-to-agent bindings and dedicated workspaces.
+- **`examples/openclaw/openclaw.channel-prompts.example.json`** — Added an OpenClaw example for per-channel Discord `systemPrompt` entries under `channels.discord.accounts.<accountId>.guilds.<guildId>.channels`.
 - **`docs/agent-bootstrap-guide.md`** / **`docs/zh/agent-bootstrap-guide.md`** — Added bilingual guidance for writing small `AGENTS.md` files and organizing on-demand `references/` manuals.
 
 ### Changed
-- **`docs/feature-matrix.md`** / **`docs/zh/feature-matrix.md`** — Added Agent bootstrap + references as a Core feature with install and verification checks, and clarified that OpenClaw channel bindings can verify route-to-workspace prompt profiles.
+- **`docs/feature-matrix.md`** / **`docs/zh/feature-matrix.md`** — Added Agent bootstrap + references as a Core feature with install and verification checks, and clarified that specialized Discord channels can be verified by checking their per-channel `systemPrompt` entries.
 - **`README.md`**, **`README_EN.md`**, and **`docs/zh/README.md`** — Added discoverability links for the agent bootstrap guide and examples.
 
 ## [1.5.1] — 2026-04-27

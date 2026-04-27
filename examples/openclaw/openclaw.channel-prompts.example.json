@@ -1,12 +1,12 @@
 {
   "_meta": {
-    "name": "Brain OS channel prompt profiles example",
-    "note": "OpenClaw does not need a separate per-channel prompt field when you bind each channel to a dedicated agent workspace. Put channel-specific instructions in that agent workspace's AGENTS.md / references/ files.",
-    "advanced_note": "agents.list[].systemPromptOverride exists, but it replaces the assembled system prompt. Prefer workspace bootstrap files unless you intentionally need a full override."
+    "name": "Brain OS per-channel systemPrompt example",
+    "note": "This shows the pattern where one Discord account / main agent serves many specialized channels, and each channel has its own systemPrompt.",
+    "boundary": "Use placeholders only. Do not commit real guild IDs, channel IDs, owner IDs, private paths, or private prompts."
   },
   "agents": {
     "defaults": {
-      "workspace": "{{USER_HOME}}/.openclaw/workspace-main",
+      "workspace": "{{USER_HOME}}/.openclaw/workspace",
       "userTimezone": "{{TIMEZONE}}",
       "model": {
         "primary": "{{MAIN_MODEL}}",
@@ -18,40 +18,7 @@
         "id": "main",
         "default": true,
         "name": "Brain OS Main",
-        "workspace": "{{USER_HOME}}/.openclaw/workspace-main"
-      },
-      {
-        "id": "knowledge-channel",
-        "name": "Knowledge Channel Agent",
-        "workspace": "{{USER_HOME}}/.openclaw/workspace-knowledge",
-        "identity": {
-          "name": "Knowledge Librarian",
-          "theme": "article ingestion, retrieval, and knowledge synthesis"
-        }
-      },
-      {
-        "id": "personal-ops-channel",
-        "name": "Personal Ops Channel Agent",
-        "workspace": "{{USER_HOME}}/.openclaw/workspace-personal-ops",
-        "identity": {
-          "name": "Personal Ops Driver",
-          "theme": "daily planning, todos, commitments, and reminders"
-        }
-      },
-      {
-        "id": "oss-sync-channel",
-        "name": "Open Source Sync Channel Agent",
-        "workspace": "{{USER_HOME}}/.openclaw/workspace-oss-sync",
-        "identity": {
-          "name": "OSS Sync Agent",
-          "theme": "public Brain OS repo updates, de-identification, PRs, and release notes"
-        }
-      },
-      {
-        "id": "strict-experiment-channel",
-        "name": "Strict Prompt Experiment Agent",
-        "workspace": "{{USER_HOME}}/.openclaw/workspace-strict-experiment",
-        "systemPromptOverride": "You are a narrowly scoped Brain OS experiment agent. Only answer about {{EXPERIMENT_SCOPE}}. If asked for anything else, say it is out of scope. This is a full system prompt override; use only when you intentionally want to replace the normal OpenClaw assembled prompt."
+        "workspace": "{{USER_HOME}}/.openclaw/workspace"
       }
     ]
   },
@@ -69,38 +36,43 @@
           "requireMention": true,
           "users": ["{{DISCORD_OWNER_USER_ID}}"]
         }
+      },
+      "accounts": {
+        "main": {
+          "guilds": {
+            "{{DISCORD_GUILD_ID}}": {
+              "channels": {
+                "{{MAIN_CHANNEL_ID}}": {
+                  "systemPrompt": "You are the main Brain OS coordinator in the main collaboration channel. Coordinate work, route requests, and keep replies concise. For risky actions, ask first."
+                },
+                "{{PERSONAL_OPS_CHANNEL_ID}}": {
+                  "systemPrompt": "You are the Brain OS Personal Ops agent in the personal operations channel. Focus on daily planning, todo triage, commitments, reminders, and personal dashboards. Do not treat this channel as a general coding or research channel."
+                },
+                "{{KNOWLEDGE_INGEST_CHANNEL_ID}}": {
+                  "systemPrompt": "You are the Brain OS knowledge ingestion agent in the article/knowledge channel. When receiving links, articles, PDFs, or notes, classify the source, preserve raw context when needed, and write structured knowledge notes using the vault governance rules."
+                },
+                "{{KNOWLEDGE_QUERY_CHANNEL_ID}}": {
+                  "systemPrompt": "You are the Brain OS knowledge query agent. Your job is to find, cite, and explain existing vault knowledge. Search before answering. Do not create new durable notes unless explicitly asked."
+                },
+                "{{OSS_SYNC_CHANNEL_ID}}": {
+                  "systemPrompt": "You are the Brain OS open-source sync agent. Help evolve the public repository as a reusable framework. De-identify private context, prefer templates over live config, update changelog and docs, and verify PRs before reporting done."
+                },
+                "{{CRON_NOTIFICATION_CHANNEL_ID}}": {
+                  "systemPrompt": "This is a scheduled job notification channel. Only respond when directly mentioned or when a cron result requires action. Keep routine OK notifications quiet."
+                }
+              }
+            }
+          }
+        }
       }
     }
   },
   "bindings": [
     {
-      "agentId": "knowledge-channel",
-      "match": {
-        "channel": "discord",
-        "guildId": "{{DISCORD_GUILD_ID}}",
-        "peer": { "kind": "channel", "id": "{{KNOWLEDGE_CHANNEL_ID}}" }
-      }
-    },
-    {
-      "agentId": "personal-ops-channel",
-      "match": {
-        "channel": "discord",
-        "guildId": "{{DISCORD_GUILD_ID}}",
-        "peer": { "kind": "channel", "id": "{{PERSONAL_OPS_CHANNEL_ID}}" }
-      }
-    },
-    {
-      "agentId": "oss-sync-channel",
-      "match": {
-        "channel": "discord",
-        "guildId": "{{DISCORD_GUILD_ID}}",
-        "peer": { "kind": "channel", "id": "{{OSS_SYNC_CHANNEL_ID}}" }
-      }
-    },
-    {
       "agentId": "main",
       "match": {
         "channel": "discord",
+        "accountId": "main",
         "guildId": "{{DISCORD_GUILD_ID}}"
       }
     }
