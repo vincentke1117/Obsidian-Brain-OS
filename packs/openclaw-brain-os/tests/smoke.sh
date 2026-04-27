@@ -60,6 +60,12 @@ bash "$PACK/install.sh" --dry-run --answers "$PACK/tests/fixtures/answers.minima
 bash "$PACK/verify.sh" "$TMP_PREVIEW/minimal" >/dev/null
 bash "$PACK/install.sh" --dry-run --answers "$PACK/tests/fixtures/answers.full.json" --out "$TMP_PREVIEW/full" >/dev/null
 bash "$PACK/verify.sh" "$TMP_PREVIEW/full" >/dev/null
+python3 - <<PY
+import json
+j=json.load(open("$TMP_PREVIEW/full/cron.jobs-patch.json"))
+assert len(j.get("jobs", [])) > 1
+assert all(job.get("enabled") is False for job in j.get("jobs", []))
+PY
 
 
 # Conflict detection should block an existing same-id agent with different config.
@@ -90,6 +96,8 @@ bash "$PACK/install.sh" --apply --yes --answers "$PACK/tests/fixtures/answers.ap
 test -f "$APPLY_ROOT/.openclaw/openclaw.json"
 test -f "$APPLY_ROOT/.openclaw/cron/jobs.json"
 test -f "$APPLY_ROOT/.openclaw/agents/main/agent/AGENTS.md"
+test -d "$APPLY_ROOT/.agents/skills/brain-vault-governance"
+test ! -d "$APPLY_ROOT/.agents/skills/observer"
 test -d "$APPLY_ROOT/BrainOS-Vault/00-INBOX"
 OPENCLAW_ROOT="$APPLY_ROOT/.openclaw" bash "$PACK/rollback.sh" >/dev/null
 rm -rf "$APPLY_ROOT"

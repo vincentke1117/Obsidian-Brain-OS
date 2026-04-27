@@ -1,0 +1,181 @@
+{
+  "version": 2,
+  "_meta": {
+    "_pack_profile": "personal-ops",
+    "_pack_note": "Generated profile cron template; jobs default disabled."
+  },
+  "jobs": [
+    {
+      "id": "fcf716cc-fefb-4722-9a8c-e4ccef333f77",
+      "name": "personal-ops-morning-brief",
+      "description": "每天 07:00 生成 Personal Ops 今日驾驶舱",
+      "enabled": false,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 7 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "【定时任务】请先读取任务文档获取完整指令：\n\n📄 文件路径：{{BRAIN_ROOT}}/04-SYSTEM/prompts/cron/personal-ops-morning-brief.md\n\n读取后严格按照文档内容执行。如果文件不存在，报告错误并终止。",
+        "model": "{{MAIN_MODEL}}",
+        "timeoutSeconds": 900
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "discord"
+      },
+      "deleteAfterRun": false,
+      "agentId": "main"
+    },
+    {
+      "id": "fc3c4261-f3c5-47e0-b27f-75e656a877e8",
+      "name": "personal-ops-weekly-plan",
+      "description": "每周一 05:10 生成 Personal Ops 本周推进盘",
+      "enabled": false,
+      "schedule": {
+        "kind": "cron",
+        "expr": "10 5 * * 1",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "【定时任务】请先读取任务文档获取完整指令：\n\n📄 文件路径：{{BRAIN_ROOT}}/04-SYSTEM/prompts/cron/personal-ops-weekly-plan.md\n\n读取后严格按照文档内容执行。如果文件不存在，报告错误并终止。",
+        "model": "{{MAIN_MODEL}}",
+        "timeoutSeconds": 900
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "discord"
+      },
+      "deleteAfterRun": false,
+      "agentId": "main"
+    },
+    {
+      "id": "8def0c33-4c90-4775-b516-0328c1985f92",
+      "name": "personal-ops-monthly-milestones",
+      "description": "每月 1 号 06:20 生成月度里程碑",
+      "enabled": false,
+      "schedule": {
+        "kind": "cron",
+        "expr": "20 6 1 * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "【定时任务】请先读取任务文档获取完整指令：\n\n📄 文件路径：{{BRAIN_ROOT}}/04-SYSTEM/prompts/cron/personal-ops-monthly-milestones.md\n\n读取后严格按照文档内容执行。如果文件不存在，报告错误并终止。",
+        "model": "{{MAIN_MODEL}}",
+        "timeoutSeconds": 900
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "discord"
+      },
+      "deleteAfterRun": false,
+      "agentId": "main"
+    },
+    {
+      "id": "bdcc847d-0157-46fb-973d-d4eab4e35205",
+      "name": "personal-ops-todo-reminder-1500",
+      "description": "每天 15:00 待办跟进提醒",
+      "enabled": false,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 15 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "【定时任务】请先读取任务文档获取完整指令：\n\n📄 文件路径：{{BRAIN_ROOT}}/04-SYSTEM/prompts/cron/personal-ops-todo-reminder-1500.md\n\n读取后严格按照文档内容执行。如果文件不存在，报告错误并终止。",
+        "model": "{{LIGHT_MODEL}}"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "discord"
+      },
+      "deleteAfterRun": false,
+      "agentId": "main"
+    },
+    {
+      "id": "763e4afb-1134-40cf-8caa-84dca461d4c3",
+      "name": "personal-ops-todo-reminder-2000",
+      "description": "每天 20:00 待办晚间跟进提醒",
+      "enabled": false,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 20 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "【定时任务】请先读取任务文档获取完整指令：\n\n📄 文件路径：{{BRAIN_ROOT}}/04-SYSTEM/prompts/cron/personal-ops-todo-reminder-2000.md\n\n读取后严格按照文档内容执行。如果文件不存在，报告错误并终止。",
+        "model": "{{LIGHT_MODEL}}"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "discord"
+      },
+      "deleteAfterRun": false,
+      "agentId": "main"
+    },
+    {
+      "id": "aec6afe8-b31e-4396-8e3b-c27a467339b7",
+      "name": "knowledgebase-commit-patrol-30m",
+      "description": "每 30 分钟巡检知识库自动补提交",
+      "enabled": false,
+      "schedule": {
+        "kind": "every",
+        "everyMs": 1800000
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "【定时任务】请先读取任务文档获取完整指令：\n\n📄 文件路径：{{BRAIN_ROOT}}/04-SYSTEM/prompts/cron/knowledgebase-commit-patrol-30m.md\n\n读取后严格按照文档内容执行。如果文件不存在，报告错误并终止。",
+        "model": "{{LIGHT_MODEL}}",
+        "timeoutSeconds": 600
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "discord"
+      },
+      "deleteAfterRun": false,
+      "agentId": "review"
+    },
+    {
+      "id": "dd3e85a5-e27e-40e1-94c5-f188779c1d9c",
+      "name": "chronicle-channel-history",
+      "description": "每 2 小时记录频道历史（Chronicle 史官）",
+      "enabled": false,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 */2 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "【定时任务】请先读取任务文档获取完整指令：\n\n📄 文件路径：{{BRAIN_ROOT}}/04-SYSTEM/prompts/cron/chronicle-every-2h-log.md\n\n读取后严格按照文档内容执行。如果文件不存在，报告错误并终止。",
+        "model": "{{LIGHT_MODEL}}",
+        "timeoutSeconds": 300
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "discord"
+      },
+      "deleteAfterRun": false,
+      "agentId": "chronicle"
+    }
+  ]
+}

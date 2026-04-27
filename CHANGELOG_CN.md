@@ -4,6 +4,16 @@
 
 ---
 
+## [1.5.6] — 2026-04-27
+
+### 新增 / Added
+- **OpenClaw Brain OS pack profiles** — 新增 minimal、knowledge、personal-ops、team、full 的 profile-specific cron patch templates，基于公开 `cron-examples/` 生成，并强制所有 jobs 默认 disabled。
+- **Bundled skills** — 新增公开脱敏 skill bundles：Brain vault governance、article integration、conversation flywheel、knowledge amplifier、personal ops、observer、Brain OS release。
+- **Skill installation support** — apply 阶段会按所选 profile 以 missing-only 模式复制 bundled skills。
+
+### 变更 / Changed
+- **`packs/openclaw-brain-os/manifest.json`** — pack preview 版本升到 `1.0.0-alpha.4`，并对齐 profile cron groups。
+
 ## [1.5.5] — 2026-04-27
 
 ### 新增 / Added

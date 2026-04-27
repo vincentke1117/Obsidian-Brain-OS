@@ -8,7 +8,7 @@ It is different from the rest of the repository:
 - `examples/` provides small copyable snippets.
 - `packs/openclaw-brain-os/` is a self-contained install pack that an agent can apply to an existing OpenClaw installation.
 
-Current status: **safe apply preview**. The pack can run `--check`, render and verify a dry-run preview, apply into a target OpenClaw root with backups, and roll back backed-up config files. Apply remains conservative: it refuses to run without `--yes`, skips existing workspace/vault files by default, and does not overwrite conflicting config unless future workflows explicitly opt into force mode.
+Current status: **profiled safe apply preview**. The pack can run `--check`, render and verify a profile-specific dry-run preview, apply into a target OpenClaw root with backups, install selected bundled skills in missing-only mode, and roll back backed-up config files. Apply remains conservative: it refuses to run without `--yes`, skips existing workspace/vault files by default, and does not overwrite conflicting config unless future workflows explicitly opt into force mode.
 
 ## What this pack installs
 
@@ -17,9 +17,9 @@ The target full pack will install or patch:
 - OpenClaw agent/workspace configuration
 - per-channel Discord `systemPrompt` entries
 - Brain OS agent workspace bootstrap files
-- Brain OS skills into `~/.agents/skills`
+- selected bundled Brain OS skills into `~/.agents/skills`
 - Brain vault structure from the repository root `vault-template/`
-- cron job templates, installed disabled by default
+- profile-specific cron job templates, installed disabled by default
 
 ## Canonical vault template
 
@@ -57,3 +57,7 @@ Run the smoke test:
 ```bash
 bash tests/smoke.sh
 ```
+
+## Profiles and bundled assets
+
+Profile-specific cron templates live under `cron/*.jobs.patch.template` and are generated from public `cron-examples/` with every job forced to `enabled: false`. Bundled skills live under `skills/bundled/` and are copied in missing-only mode according to the selected profile.
