@@ -94,6 +94,31 @@ Ordering matters. Put specific channel bindings first, then a final guild-level 
 
 ---
 
+## Channel-specific prompt profiles
+
+If each Discord channel should have a different “system prompt”, prefer binding that channel to a dedicated agent with its own workspace:
+
+```text
+# Channel
+#knowledge  -> agentId: knowledge-channel -> ~/.openclaw/workspace-knowledge/AGENTS.md
+#personal   -> agentId: personal-ops-channel -> ~/.openclaw/workspace-personal-ops/AGENTS.md
+#oss-sync   -> agentId: oss-sync-channel -> ~/.openclaw/workspace-oss-sync/AGENTS.md
+```
+
+This keeps OpenClaw's normal assembled prompt, tools, memory behavior, and safety instructions intact, while giving each channel its own `AGENTS.md`, `USER.md`, and `references/`.
+
+See:
+
+```text
+examples/openclaw/openclaw.channel-prompts.example.json
+examples/agent-workspace/AGENTS.example.md
+examples/agent-workspace/references/
+```
+
+Advanced option: OpenClaw also supports `agents.list[].systemPromptOverride`, but it replaces the full assembled system prompt. Use it only for controlled experiments or narrow agents where you intentionally want to override the normal bootstrap.
+
+---
+
 ## Cron delivery vs channel routing
 
 `openclaw.json` routes inbound chat messages to agents. Cron jobs live separately under:

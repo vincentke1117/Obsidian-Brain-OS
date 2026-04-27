@@ -102,6 +102,31 @@ examples/openclaw/openclaw.multi-channel.example.json
 
 ---
 
+## 频道级 Prompt Profile
+
+如果每个 Discord 频道都需要不同的“system prompt”，推荐做法是：把频道绑定到专用 agent，并给该 agent 一个独立 workspace：
+
+```text
+# Channel
+#knowledge  -> agentId: knowledge-channel -> ~/.openclaw/workspace-knowledge/AGENTS.md
+#personal   -> agentId: personal-ops-channel -> ~/.openclaw/workspace-personal-ops/AGENTS.md
+#oss-sync   -> agentId: oss-sync-channel -> ~/.openclaw/workspace-oss-sync/AGENTS.md
+```
+
+这样可以保留 OpenClaw 正常组装的 prompt、tools、memory 行为和安全指令，同时让每个频道拥有自己的 `AGENTS.md`、`USER.md` 和 `references/`。
+
+见：
+
+```text
+examples/openclaw/openclaw.channel-prompts.example.json
+examples/agent-workspace/AGENTS.example.md
+examples/agent-workspace/references/
+```
+
+高级选项：OpenClaw 也支持 `agents.list[].systemPromptOverride`，但它会替换完整的 assembled system prompt。只有在受控实验或窄域 agent 中明确需要覆盖默认 bootstrap 时才建议使用。
+
+---
+
 ## Cron 投递和频道路由是两件事
 
 `openclaw.json` 负责把聊天消息路由到 agent。Cron jobs 在单独文件里：

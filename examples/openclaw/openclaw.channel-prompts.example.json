@@ -1,0 +1,108 @@
+{
+  "_meta": {
+    "name": "Brain OS channel prompt profiles example",
+    "note": "OpenClaw does not need a separate per-channel prompt field when you bind each channel to a dedicated agent workspace. Put channel-specific instructions in that agent workspace's AGENTS.md / references/ files.",
+    "advanced_note": "agents.list[].systemPromptOverride exists, but it replaces the assembled system prompt. Prefer workspace bootstrap files unless you intentionally need a full override."
+  },
+  "agents": {
+    "defaults": {
+      "workspace": "{{USER_HOME}}/.openclaw/workspace-main",
+      "userTimezone": "{{TIMEZONE}}",
+      "model": {
+        "primary": "{{MAIN_MODEL}}",
+        "fallbacks": ["{{LIGHT_MODEL}}"]
+      }
+    },
+    "list": [
+      {
+        "id": "main",
+        "default": true,
+        "name": "Brain OS Main",
+        "workspace": "{{USER_HOME}}/.openclaw/workspace-main"
+      },
+      {
+        "id": "knowledge-channel",
+        "name": "Knowledge Channel Agent",
+        "workspace": "{{USER_HOME}}/.openclaw/workspace-knowledge",
+        "identity": {
+          "name": "Knowledge Librarian",
+          "theme": "article ingestion, retrieval, and knowledge synthesis"
+        }
+      },
+      {
+        "id": "personal-ops-channel",
+        "name": "Personal Ops Channel Agent",
+        "workspace": "{{USER_HOME}}/.openclaw/workspace-personal-ops",
+        "identity": {
+          "name": "Personal Ops Driver",
+          "theme": "daily planning, todos, commitments, and reminders"
+        }
+      },
+      {
+        "id": "oss-sync-channel",
+        "name": "Open Source Sync Channel Agent",
+        "workspace": "{{USER_HOME}}/.openclaw/workspace-oss-sync",
+        "identity": {
+          "name": "OSS Sync Agent",
+          "theme": "public Brain OS repo updates, de-identification, PRs, and release notes"
+        }
+      },
+      {
+        "id": "strict-experiment-channel",
+        "name": "Strict Prompt Experiment Agent",
+        "workspace": "{{USER_HOME}}/.openclaw/workspace-strict-experiment",
+        "systemPromptOverride": "You are a narrowly scoped Brain OS experiment agent. Only answer about {{EXPERIMENT_SCOPE}}. If asked for anything else, say it is out of scope. This is a full system prompt override; use only when you intentionally want to replace the normal OpenClaw assembled prompt."
+      }
+    ]
+  },
+  "channels": {
+    "discord": {
+      "enabled": true,
+      "token": {
+        "source": "env",
+        "provider": "default",
+        "id": "DISCORD_BOT_TOKEN"
+      },
+      "groupPolicy": "allowlist",
+      "guilds": {
+        "{{DISCORD_GUILD_ID}}": {
+          "requireMention": true,
+          "users": ["{{DISCORD_OWNER_USER_ID}}"]
+        }
+      }
+    }
+  },
+  "bindings": [
+    {
+      "agentId": "knowledge-channel",
+      "match": {
+        "channel": "discord",
+        "guildId": "{{DISCORD_GUILD_ID}}",
+        "peer": { "kind": "channel", "id": "{{KNOWLEDGE_CHANNEL_ID}}" }
+      }
+    },
+    {
+      "agentId": "personal-ops-channel",
+      "match": {
+        "channel": "discord",
+        "guildId": "{{DISCORD_GUILD_ID}}",
+        "peer": { "kind": "channel", "id": "{{PERSONAL_OPS_CHANNEL_ID}}" }
+      }
+    },
+    {
+      "agentId": "oss-sync-channel",
+      "match": {
+        "channel": "discord",
+        "guildId": "{{DISCORD_GUILD_ID}}",
+        "peer": { "kind": "channel", "id": "{{OSS_SYNC_CHANNEL_ID}}" }
+      }
+    },
+    {
+      "agentId": "main",
+      "match": {
+        "channel": "discord",
+        "guildId": "{{DISCORD_GUILD_ID}}"
+      }
+    }
+  ]
+}
