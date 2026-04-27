@@ -102,6 +102,35 @@ examples/openclaw/openclaw.multi-channel.example.json
 
 ---
 
+## 频道级 systemPrompt
+
+如果一个 Discord account / main agent 服务多个专用频道，推荐在下面这个位置配置每个频道自己的 prompt：
+
+```text
+channels.discord.accounts.<accountId>.guilds.<guildId>.channels.<channelId>.systemPrompt
+```
+
+这个模式适用于：同一个 agent 在不同频道承担不同职责。例如：
+
+| 频道 | Prompt 角色 |
+|---|---|
+| `{{MAIN_CHANNEL_ID}}` | 主协调 |
+| `{{PERSONAL_OPS_CHANNEL_ID}}` | 个人事务管理 |
+| `{{KNOWLEDGE_INGEST_CHANNEL_ID}}` | 文章 / 知识沉淀 |
+| `{{KNOWLEDGE_QUERY_CHANNEL_ID}}` | 知识库查询与引用 |
+| `{{OSS_SYNC_CHANNEL_ID}}` | 开源仓库同步与 PR |
+| `{{CRON_NOTIFICATION_CHANNEL_ID}}` | 定时任务通知 |
+
+可复制示例见：
+
+```text
+examples/openclaw/openclaw.channel-prompts.example.json
+```
+
+这和 `agents.list[].systemPromptOverride` 不是一回事。`systemPromptOverride` 会替换 agent 完整的 OpenClaw assembled system prompt，属于高级逃生口。对于一个 account / agent 横跨多个 Discord 频道的场景，频道级 `systemPrompt` 才是正常的频道专用提示词机制。
+
+---
+
 ## Cron 投递和频道路由是两件事
 
 `openclaw.json` 负责把聊天消息路由到 agent。Cron jobs 在单独文件里：

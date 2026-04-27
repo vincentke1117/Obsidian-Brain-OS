@@ -203,8 +203,9 @@ bash setup.sh --test
 2. **[组件全览指南](docs/component-guide.md)** ⭐ 先看全貌
 3. **[快速开始](docs/getting-started.md)** ⭐ 安装与首次运行
 4. **[Agent 团队配置](docs/agents.md)** ⭐ 真正把系统跑起来的关键
-5. **[OpenClaw 配置指南](docs/openclaw-config-guide.md)** ⭐ 多频道、cron 投递、QMD 边界
-6. **[Observer 使用手册](docs/agent-playbooks/observer-playbook.md)** ⭐ 理解系统如何自我进化
+5. **[Agent Bootstrap 指南](docs/agent-bootstrap-guide.md)** ⭐ AGENTS.md / references 模板写法
+6. **[OpenClaw 配置指南](docs/openclaw-config-guide.md)** ⭐ 多频道、cron 投递、QMD 边界
+7. **[Observer 使用手册](docs/agent-playbooks/observer-playbook.md)** ⭐ 理解系统如何自我进化
 
 ### 如果你想理解“怎么长期养出来”
 
@@ -230,6 +231,7 @@ bash setup.sh --test
 | `prompts/` | Nightly / cron / pipeline 的模板 |
 | `scripts/` | 自动化脚本 |
 | `docs/feature-matrix.md` | 功能清单 SSOT：能力、资产、安装与检查方法 |
+| `examples/agent-workspace/` | AGENTS.md / USER.md / references 示例 |
 | `docs/` | 文档与 playbooks |
 | `cron-examples/` | OpenClaw cron 配置示例 |
 | `examples/openclaw/` | OpenClaw `openclaw.json` 配置示例 |

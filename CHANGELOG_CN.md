@@ -4,6 +4,17 @@
 
 ---
 
+## [1.5.2] — 2026-04-27
+
+### 新增 / Added
+- **`examples/agent-workspace/AGENTS.example.md`**、**`examples/agent-workspace/USER.example.md`** 与 **`examples/agent-workspace/references/`** — 新增脱敏、可复制的 agent workspace bootstrap 模板。
+- **`examples/openclaw/openclaw.channel-prompts.example.json`** — 新增 OpenClaw 频道级 `systemPrompt` 示例，展示如何在 `channels.discord.accounts.<accountId>.guilds.<guildId>.channels` 下为不同 Discord 频道配置不同提示词。
+- **`docs/agent-bootstrap-guide.md`** / **`docs/zh/agent-bootstrap-guide.md`** — 新增中英双语指南，说明如何编写短小的 `AGENTS.md`，以及如何组织按需读取的 `references/` 操作手册。
+
+### 变更 / Changed
+- **`docs/feature-matrix.md`** / **`docs/zh/feature-matrix.md`** — 将 Agent bootstrap + references 加入 Core 功能清单，并补充安装与验证方法；同时明确专用 Discord 频道可通过检查频道级 `systemPrompt` 条目来验证。
+- **`README.md`**、**`README_EN.md`** 与 **`docs/zh/README.md`** — 补充 agent bootstrap guide 和示例入口。
+
 ## [1.5.1] — 2026-04-27
 
 ### 新增 / Added

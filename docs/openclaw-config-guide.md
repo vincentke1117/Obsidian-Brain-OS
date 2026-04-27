@@ -94,6 +94,35 @@ Ordering matters. Put specific channel bindings first, then a final guild-level 
 
 ---
 
+## Channel-specific system prompts
+
+If one Discord account / main agent serves multiple specialized channels, configure per-channel prompts under:
+
+```text
+channels.discord.accounts.<accountId>.guilds.<guildId>.channels.<channelId>.systemPrompt
+```
+
+This is the pattern to use when the same agent should behave differently in different channels, for example:
+
+| Channel | Prompt role |
+|---|---|
+| `{{MAIN_CHANNEL_ID}}` | main coordinator |
+| `{{PERSONAL_OPS_CHANNEL_ID}}` | personal ops driver |
+| `{{KNOWLEDGE_INGEST_CHANNEL_ID}}` | article / knowledge ingestion |
+| `{{KNOWLEDGE_QUERY_CHANNEL_ID}}` | vault query and citation |
+| `{{OSS_SYNC_CHANNEL_ID}}` | public repo sync and PR work |
+| `{{CRON_NOTIFICATION_CHANNEL_ID}}` | scheduled job notifications |
+
+See the copyable example:
+
+```text
+examples/openclaw/openclaw.channel-prompts.example.json
+```
+
+This is different from `agents.list[].systemPromptOverride`. `systemPromptOverride` replaces the full OpenClaw-assembled system prompt for an agent and should be treated as an advanced escape hatch. Per-channel `systemPrompt` is the normal channel-specialization mechanism for one account / agent working across many Discord channels.
+
+---
+
 ## Cron delivery vs channel routing
 
 `openclaw.json` routes inbound chat messages to agents. Cron jobs live separately under:
